@@ -1,8 +1,8 @@
 :root {
     --azul-branco: #F5F5F5;
     --azul-escuro: #0030C6;
-    --azul-escuro2: #022386;
-    --laranja-alert: #FF9800;
+    --azul-escuro2: hsl(225, 97%, 27%);
+    --laranja-alert: #ff7300;
     --gren: #37d65c;
     --red: #f73c4f;
     --gren-escuro:  #1E7145;

@@ -4,6 +4,7 @@ const divSideBar = document.getElementById("side-bar") as HTMLDivElement;
 const divTypeOperation = document.getElementById("typeOperation") as HTMLDivElement;
 const pouUpNewTrasacao = document.getElementById("popUpAddreceita") as HTMLDivElement;
 const popUpNewCategoria = document.getElementById("popUpNovaCategoria") as HTMLDivElement;
+const divAlert = document.getElementById("alert") as HTMLDivElement;
 
 /* buttons */
 const buttonCloseSiderBar = document.getElementById("button-close-sider-bar") as HTMLButtonElement;
@@ -17,13 +18,16 @@ const buttonDespesa = document.getElementById("expenses") as HTMLButtonElement;
 const buttonclosepouUpNewTrasacao = document.getElementById("buttonclosePopUpAddReceita") as HTMLButtonElement;
 const buttonNovaCategoriaTrasacao = document.getElementById("buttonAddNewCategoria") as HTMLButtonElement;
 const buttonclosePopUpAddCategoria = document.getElementById("buttonclosePopUpAddCategoria") as HTMLButtonElement;
+const buttonAdicionarcategoria = document.getElementById("adicionarCatecoria") as HTMLButtonElement;
 
 /* texts */
 const textLogo = document.getElementById("text-logo") as HTMLElement;
+const textAlert = document.getElementById("alertText") as HTMLElement;
 
 /*inputs*/
 const valor = document.getElementById("Valor") as HTMLInputElement; 
 const description = document.getElementById("descriptionReceita") as HTMLTextAreaElement;
+const nameCategoria = document.getElementById("inputnameCategoria") as HTMLInputElement;
 
 /* outros*/
 let isWindowOpen = false;
@@ -85,6 +89,11 @@ buttonclosepouUpNewTrasacao.addEventListener("click", closePopUpNewtrasacao);
 buttonNovaCategoriaTrasacao.addEventListener("click", newCategoriaTrasacao);
 
 buttonclosePopUpAddCategoria.addEventListener("click", closeNewCategoriatrasacao);
+
+buttonAdicionarcategoria.addEventListener("click", () =>{
+    let categoria = nameCategoria.value;
+    AddNewCategoria(categoria);
+});
 
 /* fuction */
 
@@ -153,4 +162,21 @@ function newCategoriaTrasacao(){
 
 function closeNewCategoriatrasacao(){
     popUpNewCategoria.style.display = "none";
+}
+
+function AddNewCategoria(valorOption:string){
+    textAlert.textContent = "";
+    const selectCategoria = document.getElementById("categoria") as HTMLSelectElement;
+
+    if(nameCategoria.value !== ""){
+        const option = document.createElement("option") as HTMLOptionElement;
+        option.value = valorOption;
+        option.textContent = valorOption;
+        selectCategoria.appendChild(option);
+        closeNewCategoriatrasacao();
+    }else{
+        buttonclosePopUpAddCategoria.disabled;
+        textAlert.textContent = "o nome da categoria esta vazio, digite um nome";
+        divAlert.style.display = "flex";
+    }
 }
