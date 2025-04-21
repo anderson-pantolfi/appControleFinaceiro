@@ -1,0 +1,51 @@
+:root {
+    --azul-branco: #F5F5F5;
+    --azul-escuro: #0030C6;
+    --azul-escuro2: #022386;
+    --laranja-alert: #FF9800;
+    --gren: #37d65c;
+    --red: #f73c4f;
+    --gren-escuro:  #1E7145;
+    --red-escuro: #B00020;
+    --cinza-100: #F8F9FA;
+    --cinza-200: #b3b3b3;
+    --cinza-300: #6C7588;
+    --preto: #000000;
+    --branco: #ffffff;
+}
+
+@font-face {
+    font-family: Montserrat-ExtraBold;
+    src: url("../fonts/Montserrat-ExtraBoldItalic.ttf");
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(../fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url(../fonts/Montserrat-Medium.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Light;
+    src: url(../fonts/Montserrat-Light.ttf);
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: #757474;
+}
+
+#corpo{
+    max-width: 1500px;
+    background-color: var(--cinza-100);
+}
+

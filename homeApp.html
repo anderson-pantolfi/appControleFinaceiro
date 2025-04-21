@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <title>NOVO MILIONARIO</title>
+
+        <link rel="stylesheet" href="src/css/estilodashboard.css">
+        <link rel="stylesheet" href="src/css/estiloprincipal.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width user-scalable=no initial-scale=1.0">
+        <meta name="keywords" content="orçamentos, financas, dinheiro, receitas, despesas, investimentos">
+        <meta name="author" content="Anderson Pantolfi Moraes">
+        <meta name="description" content="este app esta aqui para auxiliar-te na organização de seus patrimonio de forma rapida e segura tudo concetrado em um unico local">
+    </head>
+
+    <body>
+        <div id="corpo">
+            
+            <div id="side-bar">
+                <div id="side-header">
+                    <div id="logo">
+                        <img src="src/image/logo-image.png" id="logo-image"></br>
+                        <h1 id="text-logo">O NOVO MILIONÁRIO</h1>
+                    </div>
+
+                    <div id="new-transacao">
+                        <button id="buttonTransacaoContraido" class="buttonTransacao buttonEfectHoverAzul">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+
+                        <button id="buttonTransacaoExpandido" class="buttonTransacao buttonEfectHoverAzul">NOVA TRANSAÇÃO</button>
+                    </div>
+
+                    <div id="typeOperation">
+                        <button id="deposit" class="operationTransaction">
+                            RECEITAS
+                        </button>
+
+                        <button id="expenses" class="operationTransaction">
+                            DESPESAS
+                        </button>
+                    </div>
+                </div>
+
+                <nav id="side-menu">
+                    <ul>
+                        <li>
+                            <a class="button-side-menu" id="side-button-inicio" href="homeApp.html">
+                                <i class="fa-solid fa-house icon-side-bar"></i>
+                                <span class="text-button-side">inicio</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="button-side-menu" id="side-button-trancacao" href="transacao.html">
+                                <i class="fa-solid fa-sack-dollar icon-side-bar"></i>
+                                <span class="text-button-side">transações</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="button-side-menu" id="side-button-investimento" href="investimentos.html">
+                                <i class="fa-solid fa-money-bill-trend-up icon-side-bar"></i>
+                                <span class="text-button-side">investimentos</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="button-side-menu" id="side-button-metas" href="metas.html">
+                                <!-- <img src="src/image/icons-metas.png"> -->
+                                <i class="fa-solid fa-bullseye icon-side-bar"></i>
+                                <span class="text-button-side">metas</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a class="button-side-menu" id="side-button-contas-bank" href="contas-banck.html">
+                                <i class="fa-solid fa-building-columns icon-side-bar"></i>
+                                <span class="text-button-side">Contas</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="button-side-menu"> 
+                                <i class="fa-solid fa-calculator icon-side-bar"></i>
+                                <span class="text-button-side">CALCULADORAS</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <button id="button-close-sider-bar" class="buttonOpenandClose buttonEfectHoverAzul">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <button id="button-open-sider-bar"  class="buttonOpenandClose buttonEfectHoverAzul">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                </nav>
+            </div>    
+
+            <main>
+                <header id="cabercalho">
+                    <i class="fa-solid fa-bell"></i>
+                    <div id="perfil">
+                        <div id="perfilimag"></div>
+
+                        <div id="nameperfil">
+                            <span class="username">ANDERSON</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>      
+                </header>
+
+                <div id="popUpNovaCategoria" class="popUp">
+
+                    <button id="buttonclosePopUpAddCategoria" class="buttonclose">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                    <h3>NOVA CATEGORIA</h3>
+
+                    <div class="divContentAddTrasicao">
+                        <div id="namecategoria">NAME:</div>
+                        <input type="text" id="inputnameCategoria">
+                    </div>
+
+                    <div id="divDescriptionCategoria" class="divContentAddTrasicao">
+                        <i class="fa-solid fa-comments iconCatecoriaAddTrasacao"></i>
+                        <textarea id="descriptioncategoria" placeholder="descrição da categoria">
+                        </textarea>
+                    </div>
+
+                    <button id="adicionarCatecoria" class="adicionar">ADICIONAR</button>
+                </div>
+                
+                <div id="popUpAddreceita" class="popUp">
+                        <button id="buttonclosePopUpAddReceita" class="buttonclose">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                        <h3 id="titleAddTrazacao"></h3>
+
+                        <div id="divValor" class="divContentAddTrasicao">
+                            <i class="fa-solid fa-money-bill iconCatecoriaAddTrasacao"></i>
+                            <input type="text" id="Valor" placeholder="valor">
+                            <select class="moedaTrasacao">
+                                <option selected>Real</option>
+                                <option>Dolar</option>
+                                <option>Euro</option>
+                            </select>
+                        </div>
+
+                        <div id="divcategoria" class="divContentAddTrasicao">
+                            <i class="fa-solid fa-font-awesome iconCatecoriaAddTrasacao"></i>
+                            <select id="categoria">
+                                <option selected></option>
+                            </select>
+
+                            <button id="buttonAddNewCategoria">nova categoria</button>
+                        </div>
+
+                        <div id="divDescriptionReceita" class="divContentAddTrasicao">
+                            <i class="fa-solid fa-comments iconCatecoriaAddTrasacao"></i>
+                            <textarea id="descriptionReceita" placeholder="descrição da trasacao">
+                            </textarea>
+                        </div>
+
+                        <div id="divDateTrasacao" class="divContentAddTrasicao">
+                            <i class="fa-solid fa-calendar-days iconCatecoriaAddTrasacao"></i>
+                            <input type="date" id="datenewtrasicao">
+                        </div>
+
+
+                        <button id="adicionartrasacao" class="adicionar">adicionar</button>
+                </div>
+
+
+                <div id="text-page">
+                    <h2>inicio</h2>
+
+                    <h3>Olá, <span id="username-welcome">anderson pantolfi moraes</span> seja bem vindo </h3>
+                </div>
+                
+                <section id="despesas-receitas">
+                    <div id="select-bank"></div>
+
+                    <div id="select-mes"></div>
+                    <div id="saldo-atual"></div>
+                    <div id="conterner-trasacao">
+                        <div id="despesas"></div>
+                        <div id="receitas"></div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script src="src/js/homeapp.js"></script>
+        <script src="https://kit.fontawesome.com/c978c073eb.js" crossorigin="anonymous"></script>
+    </body>      
+</html>
