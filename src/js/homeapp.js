@@ -6,6 +6,8 @@ const divTypeOperation = document.getElementById("typeOperation");
 const pouUpNewTrasacao = document.getElementById("popUpAddreceita");
 const popUpNewCategoria = document.getElementById("popUpNovaCategoria");
 const divAlert = document.getElementById("alert");
+const divperfil = document.getElementById("perfil");
+const divsubMenuPerfil = document.getElementById("alert");
 /* buttons */
 const buttonCloseSiderBar = document.getElementById("button-close-sider-bar");
 const buttonOpenSiderBar = document.getElementById("button-open-sider-bar");
@@ -19,6 +21,7 @@ const buttonclosepouUpNewTrasacao = document.getElementById("buttonclosePopUpAdd
 const buttonNovaCategoriaTrasacao = document.getElementById("buttonAddNewCategoria");
 const buttonclosePopUpAddCategoria = document.getElementById("buttonclosePopUpAddCategoria");
 const buttonAdicionarcategoria = document.getElementById("adicionarCatecoria");
+const buttonclosePopUpAviso = document.getElementById("okAlert");
 /* texts */
 const textLogo = document.getElementById("text-logo");
 const textAlert = document.getElementById("alertText");
@@ -29,6 +32,7 @@ const nameCategoria = document.getElementById("inputnameCategoria");
 /* outros*/
 let isWindowOpen = false;
 /* event */
+divperfil.addEventListener("click", openSubMenuPerfil);
 buttonCloseSiderBar.addEventListener("click", () => {
     closeSideBar();
 });
@@ -82,7 +86,11 @@ buttonAdicionarcategoria.addEventListener("click", () => {
     let categoria = nameCategoria.value;
     AddNewCategoria(categoria);
 });
+buttonclosePopUpAviso.addEventListener("click", closeAviso);
 /* fuction */
+function openSubMenuPerfil() {
+    divsubMenuPerfil.style.display = "block";
+}
 function closeSideBar() {
     divSideBar.style.width = "8vw";
     textLogo.style.display = "none";
@@ -128,10 +136,12 @@ function closePopUpNewtrasacao() {
     pouUpNewTrasacao.style.display = "none";
 }
 function newCategoriaTrasacao() {
+    buttonclosepouUpNewTrasacao.disabled = true;
     popUpNewCategoria.style.display = "flex";
 }
 function closeNewCategoriatrasacao() {
     popUpNewCategoria.style.display = "none";
+    buttonclosepouUpNewTrasacao.disabled = false;
 }
 function AddNewCategoria(valorOption) {
     textAlert.textContent = "";
@@ -144,8 +154,13 @@ function AddNewCategoria(valorOption) {
         closeNewCategoriatrasacao();
     }
     else {
-        buttonclosePopUpAddCategoria.disabled;
+        buttonclosePopUpAddCategoria.disabled = true;
         textAlert.textContent = "o nome da categoria esta vazio, digite um nome";
         divAlert.style.display = "flex";
     }
+}
+function closeAviso() {
+    buttonclosePopUpAddCategoria.disabled = false;
+    textAlert.textContent = "";
+    divAlert.style.display = "none";
 }

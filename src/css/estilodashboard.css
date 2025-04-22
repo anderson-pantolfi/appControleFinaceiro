@@ -211,6 +211,57 @@ main{
     color: var(--azul-escuro);
 }
 
+#subMenuPerfil{
+    position: absolute;
+    display: none;
+    top: 95px;
+    width: 30%;
+    border: 2px solid var(--cinza-300);
+    border-radius: 20px;
+    background-color: var(--branco);
+}
+
+#subMenuPerfil > div{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 25px 5px;
+    text-align: justify;
+    text-transform: capitalize;
+    font-family: "Montserrat-Bold";
+    font-size: 1.2em;
+}
+
+#subMenuPerfil > div:hover{   
+    background-color: var(--azul-roal);
+    color: var(--branco);
+}
+
+.sub-menu-border-radius-top{
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.sub-menu-border-radius-botton{
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#subMenuPerfil > div i {
+    margin-right: 10px;
+    font-size: 1.15em;
+}
+
+#subMenuPerfil #sair{
+    color: var(--red);
+}
+
+#subMenuPerfil #sair:hover{    
+    background-color: var(--red);
+    color: var(--branco);
+}
+
 .fa-chevron-down{
     margin-left: 10px;
 }

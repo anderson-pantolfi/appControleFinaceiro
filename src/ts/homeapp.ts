@@ -5,6 +5,8 @@ const divTypeOperation = document.getElementById("typeOperation") as HTMLDivElem
 const pouUpNewTrasacao = document.getElementById("popUpAddreceita") as HTMLDivElement;
 const popUpNewCategoria = document.getElementById("popUpNovaCategoria") as HTMLDivElement;
 const divAlert = document.getElementById("alert") as HTMLDivElement;
+const divperfil = document.getElementById("perfil") as HTMLDivElement;
+const divsubMenuPerfil = document.getElementById("alert") as HTMLDivElement;
 
 /* buttons */
 const buttonCloseSiderBar = document.getElementById("button-close-sider-bar") as HTMLButtonElement;
@@ -19,6 +21,7 @@ const buttonclosepouUpNewTrasacao = document.getElementById("buttonclosePopUpAdd
 const buttonNovaCategoriaTrasacao = document.getElementById("buttonAddNewCategoria") as HTMLButtonElement;
 const buttonclosePopUpAddCategoria = document.getElementById("buttonclosePopUpAddCategoria") as HTMLButtonElement;
 const buttonAdicionarcategoria = document.getElementById("adicionarCatecoria") as HTMLButtonElement;
+const buttonclosePopUpAviso = document.getElementById("okAlert") as HTMLButtonElement;
 
 /* texts */
 const textLogo = document.getElementById("text-logo") as HTMLElement;
@@ -33,6 +36,8 @@ const nameCategoria = document.getElementById("inputnameCategoria") as HTMLInput
 let isWindowOpen = false;
 
 /* event */
+divperfil.addEventListener("click", openSubMenuPerfil);
+
 buttonCloseSiderBar.addEventListener("click", () =>{
     closeSideBar();
 });
@@ -95,7 +100,12 @@ buttonAdicionarcategoria.addEventListener("click", () =>{
     AddNewCategoria(categoria);
 });
 
+buttonclosePopUpAviso.addEventListener("click", closeAviso);
+
 /* fuction */
+function openSubMenuPerfil(){
+    divsubMenuPerfil.style.display = "block";
+}
 
 function closeSideBar(){
     divSideBar.style.width = "8vw";
@@ -157,11 +167,13 @@ function closePopUpNewtrasacao(){
 }
 
 function newCategoriaTrasacao(){
+    buttonclosepouUpNewTrasacao.disabled = true;
     popUpNewCategoria.style.display = "flex";
 }
 
 function closeNewCategoriatrasacao(){
     popUpNewCategoria.style.display = "none";
+    buttonclosepouUpNewTrasacao.disabled = false;
 }
 
 function AddNewCategoria(valorOption:string){
@@ -175,8 +187,14 @@ function AddNewCategoria(valorOption:string){
         selectCategoria.appendChild(option);
         closeNewCategoriatrasacao();
     }else{
-        buttonclosePopUpAddCategoria.disabled;
+        buttonclosePopUpAddCategoria.disabled = true;
         textAlert.textContent = "o nome da categoria esta vazio, digite um nome";
         divAlert.style.display = "flex";
     }
+}
+
+function closeAviso(){
+    buttonclosePopUpAddCategoria.disabled = false;
+    textAlert.textContent = "";
+    divAlert.style.display = "none";
 }
