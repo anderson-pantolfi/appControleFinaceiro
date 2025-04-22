@@ -6,7 +6,7 @@ const pouUpNewTrasacao = document.getElementById("popUpAddreceita") as HTMLDivEl
 const popUpNewCategoria = document.getElementById("popUpNovaCategoria") as HTMLDivElement;
 const divAlert = document.getElementById("alert") as HTMLDivElement;
 const divperfil = document.getElementById("perfil") as HTMLDivElement;
-const divsubMenuPerfil = document.getElementById("alert") as HTMLDivElement;
+const divsubMenuPerfil = document.getElementById("subMenuPerfil") as HTMLDivElement;
 
 /* buttons */
 const buttonCloseSiderBar = document.getElementById("button-close-sider-bar") as HTMLButtonElement;

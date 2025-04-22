@@ -7,7 +7,7 @@ const pouUpNewTrasacao = document.getElementById("popUpAddreceita");
 const popUpNewCategoria = document.getElementById("popUpNovaCategoria");
 const divAlert = document.getElementById("alert");
 const divperfil = document.getElementById("perfil");
-const divsubMenuPerfil = document.getElementById("alert");
+const divsubMenuPerfil = document.getElementById("subMenuPerfil");
 /* buttons */
 const buttonCloseSiderBar = document.getElementById("button-close-sider-bar");
 const buttonOpenSiderBar = document.getElementById("button-open-sider-bar");
