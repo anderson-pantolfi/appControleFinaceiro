@@ -2,7 +2,6 @@
 <html lang="pt-BR">
     <head>
         <title>NOVO MILIONARIO</title>
-
         <link rel="stylesheet" href="src/css/estilodashboard.css">
         <link rel="stylesheet" href="src/css/estiloprincipal.css">
         <meta charset="UTF-8">
@@ -14,9 +13,8 @@
 
     <body>
         <div id="corpo">
-            
-            <div id="side-bar">
-                <div id="side-header">
+            <aside id="side-bar">
+                <section id="side-header">
                     <div id="logo">
                         <img src="src/image/logo-image.png" id="logo-image"></br>
                         <h1 id="text-logo">O NOVO MILIONÁRIO</h1>
@@ -39,7 +37,7 @@
                             DESPESAS
                         </button>
                     </div>
-                </div>
+                </section>
 
                 <nav id="side-menu">
                     <ul>
@@ -95,7 +93,7 @@
                     </button>
 
                 </nav>
-            </div>    
+            </aside>    
 
             <main>
                 <header id="cabercalho">
@@ -104,30 +102,38 @@
                         <div id="perfilimag"></div>
 
                         <div id="nameperfil">
-                            <span class="username">ANDERSON</span>
+                            <span class="username">name user</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
                     
                     <div id="subMenuPerfil">
                         <div id="conta" class="sub-menu-border-radius-top">
-                            <i class="fa-solid fa-user"></i>
-                            minha conta
+                            <a href="minhaconta.html" class="sub-menu-border-radius-top">
+                                <i class="fa-solid fa-user"></i>
+                                minha conta
+                            </a>
                         </div>
 
                         <div id="configuração">
-                            <i class="fa-solid fa-gear"></i>
-                            configuração
+                            <a href="configuracao.html">
+                                <i class="fa-solid fa-gear"></i>
+                                configuração
+                            </a>
                         </div>
 
                         <div id="meuPlano">
-                            <i class="fa-solid fa-file-signature"></i>
-                            Meu Plano
+                            <a href="myplan.html">
+                                <i class="fa-solid fa-file-signature"></i>
+                                Meu Plano
+                            </a>
                         </div>
 
                         <div>
-                            <i class="fa-solid fa-headset"></i>
-                            suporte
+                            <a href="suporte.html">
+                                <i class="fa-solid fa-headset"></i>
+                                suporte
+                            </a>
                         </div>
 
                         <div id="sair" class="sub-menu-border-radius-botton">
@@ -211,7 +217,7 @@
                 <div id="text-page">
                     <h2>inicio</h2>
 
-                    <h3>Olá, <span id="username-welcome">anderson pantolfi moraes</span> seja bem vindo </h3>
+                    <h3>Olá, <span id="username-welcome">name user completo</span> seja bem vindo </h3>
                 </div>
                 
                 <section id="despesas-receitas">

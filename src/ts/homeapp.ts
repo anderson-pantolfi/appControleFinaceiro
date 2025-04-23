@@ -33,10 +33,19 @@ const description = document.getElementById("descriptionReceita") as HTMLTextAre
 const nameCategoria = document.getElementById("inputnameCategoria") as HTMLInputElement;
 
 /* outros*/
-let isWindowOpen = false;
+let isWindowOpenNewtrasacao = false;
+let isWindowOpenSubPerfilMenu = false;
 
 /* event */
-divperfil.addEventListener("click", openSubMenuPerfil);
+divperfil.addEventListener("click", (event)=>{
+    isWindowOpenSubPerfilMenu = !isWindowOpenSubPerfilMenu;
+    if(isWindowOpenSubPerfilMenu){
+        openSubMenuPerfil();
+    }else{
+        closeSubMenuPerfil();
+    }
+    event.stopPropagation();
+});
 
 buttonCloseSiderBar.addEventListener("click", () =>{
     closeSideBar();
@@ -47,8 +56,8 @@ buttonOpenSiderBar.addEventListener("click", () => {
 });
 
 buttonNewTrasacaoopen.addEventListener("click", (event) => {
-    isWindowOpen = !isWindowOpen; 
-    if (isWindowOpen) {
+    isWindowOpenNewtrasacao = !isWindowOpenNewtrasacao ; 
+    if (isWindowOpenNewtrasacao ) {
         divTypeOperation.style.left = "210px"
         divTypeOperation.style.top = "170px"
         newTrasacao(); 
@@ -59,8 +68,8 @@ buttonNewTrasacaoopen.addEventListener("click", (event) => {
 });
 
 buttonNewTrasacaoclose.addEventListener("click", (event) => {
-    isWindowOpen = !isWindowOpen; 
-    if (isWindowOpen) {
+    isWindowOpenNewtrasacao  = !isWindowOpenNewtrasacao ; 
+    if (isWindowOpenNewtrasacao) {
         divTypeOperation.style.left = "90px"
         divTypeOperation.style.top = "130px"
         newTrasacao(); 
@@ -71,9 +80,11 @@ buttonNewTrasacaoclose.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-    if (event.target instanceof Node && isWindowOpen && !divTypeOperation.contains(event.target) && event.target !== buttonNewTrasacaoopen) {
+    if ( (event.target instanceof Node && isWindowOpenNewtrasacao && !divTypeOperation.contains(event.target) && event.target !== buttonNewTrasacaoopen) || ((event.target instanceof Node && isWindowOpenSubPerfilMenu && !divsubMenuPerfil.contains(event.target)))){
         closenewtrasacao(); 
-        isWindowOpen = false; 
+        closeSubMenuPerfil();
+        isWindowOpenSubPerfilMenu = false;
+        isWindowOpenNewtrasacao  = false; 
     }
 });
 
@@ -105,6 +116,12 @@ buttonclosePopUpAviso.addEventListener("click", closeAviso);
 /* fuction */
 function openSubMenuPerfil(){
     divsubMenuPerfil.style.display = "block";
+    closenewtrasacao();
+}
+
+function closeSubMenuPerfil(){
+    divsubMenuPerfil.style.display = "none";
+    closenewtrasacao();
 }
 
 function closeSideBar(){
