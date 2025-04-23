@@ -46,7 +46,571 @@ body{
 }
 
 #corpo{
+    display: flex;
+    flex-direction: row;   
     max-width: 1500px;
-    background-color: var(--cinza-100);
+    background-color: var(--cinza-100);;
+    min-height: 100vh;
+}
+
+#cabercalho, #side-bar{    
+    padding: 15px;
+    background-color: white;
+}
+
+#side-bar{    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    width: 20vw;
+    border-right: 2px #d3d2d2 solid;
+}
+
+#logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#text-logo{
+    font-family: "Montserrat-ExtraBold";
+    font-size: 1.4em;
+    text-align: center;
+}
+
+#new-transacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0px;
+}
+
+.buttonTransacao{
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    cursor: pointer;
+}
+
+#buttonTransacaoExpandido{
+    padding: 15px;
+    font-family: "Montserrat-Bold";
+}
+
+#buttonTransacaoContraido{
+    display: none;
+    padding: 10px;
+    font-size: 30px;
+}
+
+#typeOperation{
+    position: absolute;
+    top: 170px;
+    left: 210px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--cinza-300);
+    border-radius: 8px;
+    padding: 10px;
+    background-color: var(--branco);
+}
+
+.operationTransaction{
+    width: 200px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bolder;
+    font-size: 1.2em;
+    text-align: center;
+    color: var(--branco);
+}
+
+#deposit{
+    border: 2px solid var(--gren);
+    background-color: var(--gren);
+    margin-bottom: 5px;
+}
+
+#expenses{
+    border: 2px solid var(--red);
+    background-color: var(--red);
+}
+
+#side-menu{
+    margin-top: 30px;
+}
+
+#deposit:hover{
+    border: 2px solid var(--gren-escuro);
+    background-color: var(--gren-escuro);
+}
+
+#expenses:hover{
+    border: 2px solid var(--red-escuro);
+    background-color: var(--red-escuro);
+}
+
+.buttonOpenandClose{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    cursor: pointer;
+}
+
+.buttonEfectHoverAzul:hover{
+    background-color: var(--azul-escuro2);
+}
+
+#button-close-sider-bar{
+    top: -670px;
+    left: 215px;
+}
+
+#button-open-sider-bar{
+    display: none;
+    top: -620px;
+    left: 80px;
+}
+
+ul{
+    list-style: none;
+}
+
+.button-side-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin-top: 5px;
+    width: 200px;
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-decoration: none;
+    color: var(--cinza-300);
+    cursor: pointer;
+}
+
+.button-side-menu:hover{
+    background-color: var(--azul-branco);
+    border-radius: 30px;
+    color: #4164D1;
+}
+
+.icon-side-bar{
+    font-size: 30px;
+}
+
+.text-button-side{
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-family: "Montserrat-Medium";
+    font-weight: bolder;
+}
+
+main{    
+    width: 100vw;
+    z-index: 1;
+}
+
+#cabercalho{
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: flex-end;
+    padding-right: 50px;
+    border-bottom: 2px #d3d2d2 solid;
+}
+
+#perfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0px;
+    text-decoration: none;
+}
+
+#perfil:hover{
+    background-color: var(--azul-branco);
+    border-radius: 40px;
+}
+
+#perfilimag{
+    margin-left: 15px;
+    background-color: red;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+}
+
+#nameperfil{
+    text-transform: uppercase;
+    font-family: "Montserrat-Bold";
+    padding-right: 30px;
+}
+
+#perfil:hover{
+    color: var(--azul-escuro);
+}
+
+#subMenuPerfil{
+    position: absolute;
+    display: none;
+    top: 95px;
+    right: 20px;
+    width: 30%;
+    border: 2px solid var(--cinza-300);
+    border-radius: 20px;
+    background-color: var(--branco);
+}
+
+#subMenuPerfil > div{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#subMenuPerfil > div:hover{   
+    background-color: var(--azul-roal);
+    color: var(--branco);
+}
+
+.sub-menu-border-radius-top{
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.sub-menu-border-radius-botton{
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#subMenuPerfil > div i {
+    margin-right: 10px;
+}
+
+#subMenuPerfil > div a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    text-align: justify;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-family: "Montserrat-Bold";
+    padding: 25px 5px;
+    font-size: 1.2em;
+    color: black;
+}
+
+#subMenuPerfil > div a:hover{
+    color: white;
+}
+
+#subMenuPerfil #sair{
+    padding: 25px 5px;
+    text-align: justify;
+    text-transform: capitalize;
+    font-family: "Montserrat-Bold";
+    font-size: 1.2em;
+    color: var(--red);
+}
+
+#subMenuPerfil #sair:hover{    
+    background-color: var(--red);
+    color: var(--branco);
+}
+
+.fa-chevron-down{
+    margin-left: 10px;
+}
+
+.fa-bell{ /* icon notificação header */
+    font-size: 35px;
+    margin-right: 15px;
+}
+
+.fa-bell:hover{  /* icon notificação header */
+    color: var(--azul-escuro);
+}
+
+.popUp{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    padding: 15px;
+    border: 2px double black;
+    border-radius: 25px; 
+    background-color: rgb(238, 238, 238);
+}
+
+#alert{
+    flex-direction: row;
+    top: 300px;
+    left: 400px;
+    height: 200px;
+    z-index: 3;
+}
+
+#okAlert{
+    margin-top: 100px;
+}
+
+.fa-exclamation{
+    font-size: 6em;
+    color: var(--laranja-alert);
+    margin-right: 20px;
+    margin-left: 15px;
+    text-shadow: 2px 2px 2px black;
+}
+
+#popUpNovaCategoria{
+    width: 30%;
+    left: 500px;
+    top: 250px;
+    z-index: 2;
+}
+
+.buttonclose{
+    position: absolute;
+    padding: 5px;
+    background-color: var(--red-escuro);
+    font-size: 2em;
+    border-radius: 10px;
+    color: var(--branco);
+}
+
+#buttonclosePopUpAddCategoria{
+    top: 20px;
+    right: 20px;
+}
+
+#namecategoria{
+    font-family: "Montserrat-Bold";
+    margin-left: 15px;
+}
+
+#inputnameCategoria{
+    width: 100%;
+    margin-left: 15px;    
+    font-family: "Montserrat-Medium";
+    font-size: 1.4em;
+}
+
+#descriptioncategoria{
+    resize: none;
+    width: 80%;
+    padding: 20px 10px;
+    font-family: "Montserrat-Medium";
+    font-size: 1.2em;
+    margin-left: 25px;
+}
+
+.buttonclose:hover{
+    background-color: var(--red);
+}
+
+#adicionarCatecoria{
+    margin-top: 15px;
+}
+
+#popUpNovaCategoria h3{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-family: "Montserrat-Bold";
+    font-size: 1.7em;
+}
+
+#nameCategoria{
+    font-family: "Montserrat-Medium";
+    font-size: 1.4em;
+}
+
+#popUpAddreceita{
+    width: 40%;
+    margin: 30px; 
+    z-index: 1;
+}
+
+#buttonclosePopUpAddReceita{
+    top: 25px;
+    right: 30px;
+}
+
+.fa-xmark{
+    color: var(--branco);
+}
+
+#titleAddTrazacao{
+    padding-top: 20px;
+    padding-bottom: 15px;
+    font-size: 2em;
+    font-family: "Montserrat-Bold";
+    text-transform: uppercase;
+}
+
+.divContentAddTrasicao{
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    padding-left: 40px;
+}
+
+.iconCatecoriaAddTrasacao{
+    font-size: 3em;
+}
+
+#Valor{
+    width: 70%;
+    margin-left: 20px;
+    padding: 10px 15px 10px 0px;
+    text-align: right;
+    font-size: 1.2em;
+    font-family: "Montserrat-Bold";
+}
+
+.moedaTrasacao{
+    text-transform: uppercase;
+    text-align: center;
+    font-family: "Montserrat-Bold";
+    font-size: 1.05em;
+    margin-left: 10px;
+    padding: 10px 15px;
+}
+
+.fa-money-bill{
+    color: var(--gren);
+}
+
+#categoria{
+ margin-left: 25px;
+ width: 80%;
+ padding: 10px;
+ text-transform: uppercase;
+ text-align: center;
+ font-family: "Montserrat-Bold";
+ font-size: 1.4em;
+}
+
+#buttonAddNewCategoria{
+    margin-left: 15px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-family: "Montserrat-Bold";
+    background-color: var(--gren-escuro);
+    color: var(--branco);
+}
+
+#buttonAddNewCategoria:hover{
+    background-color: var(--gren);
+}
+
+#descriptionReceita{    
+    margin-left: 15px;
+    padding: 15px 20px;
+    resize: none;
+    width: 80%;
+    text-align: justify;
+    font-family: "Montserrat-Medium";
+    font-size: 1.4em;
+}
+
+.fa-comments{
+    color: var(--azul-escuro);
+}
+
+#datenewtrasicao{
+    margin-left: 35px;
+}
+
+.fa-calendar-days {
+    color: var(--red-escuro);
+}
+
+.adicionar{
+    border-radius: 15px;
+    padding: 20px;
+    background-color: var(--red-escuro);
+    text-transform: uppercase;
+    font-family: "Montserrat-ExtraBold";
+    font-size: 1.05em;
+    font-weight: bolder;
+    color: var(--branco);
+}
+
+.adicionar:hover{
+    background-color: var(--red);
+}
+
+#logo-moblie{
+    display: none;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 959px) {
+    #side-bar, #perfil, i.fa-bell{
+        display: none;
+    }
+
+    #logo-moblie{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        width: 100vw;
+    }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1199px){
+    #button-close-sider-bar{
+        top: -670px;
+        left: 197px;
+    }
+    
+    #button-open-sider-bar{
+        display: none;
+        top: -620px;
+        left: 65px;
+    }
+
+    #okAlert{
+        margin-top: 130px;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1315px){
+    #button-open-sider-bar{
+        display: none;
+        top: -620px;
+        left: 73px;
+    }
+
+    #popUpNovaCategoria{
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1501px) {
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
