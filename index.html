@@ -3,6 +3,9 @@
     <head>
         <title>NOVO MILIONARIO</title>
 
+        <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+        <link rel="stylesheet" href="src/css/estiloprincipal.css">
+        <link rel="stylesheet" href="src/css/index.css">
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width user-scalable=no initial-scale=1.0">
@@ -12,11 +15,39 @@
     </head>
 
     <body>
-        <div id="text-welcome">
-            <h1>SEJA BEM VINDO AO NOVO MILIONARIO</h1>
+        <div id="corpo">
+            <header id="cabercalhoIndex">
+                <div id="cabercalho-nav">
+                    <div id="logo">
+                        <img src="src/image/logo-image.png" id="logo-image">
+                        <h1 id="text-logo">O NOVO MILIONÁRIO</h1>
+                    </div>
+                    
+                    <nav id="menu">
+                        <ul>
+                            <li><a href="">Home</a></li>
+                            <li><a href="">nosso sistema</a></li>
+                            <li><a href="">Planos</a></li>
+                            <li><a href="">fale Conosco</a></li>
+                        </ul>
+                    </nav>
 
-            <h2>Seu futuro financeiro começa agora! Descomplique suas finanças e conquiste seus sonhos com o Futuro Milionário</h2>
-        </div>
+                    <button id="buttonlogin">LOGIN</button>
+                </div>
+                
+                <section id="banner">
+                    <div id="text-welcome">
+                        <h1>Controle. Cresça. Conquiste.<br>Com o Novo Milionário ao seu lado.</h1>
+                        <p>Sua virada financeira começa agora com o sistema que transforma suas finanças rumo ao sucesso.</p>
+                    </div>
+
+                    <button id="buttoncadastro">CRIE UMA CONTA</button>
+                </section>
+            </header>
+            <main>
+                
+            </main>
+        </div>                
         <script src="main.js"></script>
     </body>
 </html>
