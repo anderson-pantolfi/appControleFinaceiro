@@ -3,245 +3,358 @@
     <head>
         <title>NOVO MILIONARIO</title>
         <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
-        <link rel="stylesheet" href="src/css/estilodashboard.css">
-        <link rel="stylesheet" href="src/css/estiloappClient.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="src/css/estiloprincipal.css">
+        <link rel="stylesheet" href="src/css/estiloprincipalappclient.css">
+        <link rel="stylesheet" href="src/css/estilodashboard.css">
         
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width user-scalable=no initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
         <meta name="keywords" content="orçamentos, financas, dinheiro, receitas, despesas, investimentos">
         <meta name="author" content="Anderson Pantolfi Moraes">
         <meta name="description" content="este app esta aqui para auxiliar-te na organização de seus patrimonio de forma rapida e segura tudo concetrado em um unico local">
     </head>
 
     <body>
-        <div id="corpo">
-            <aside id="side-bar">
-                <section id="side-header">
-                    <div id="logo">
-                        <img src="src/image/logo-image.png" id="logo-image"></br>
-                        <h1 id="text-logo">O NOVO MILIONÁRIO</h1>
+        <aside id="sidebar" class="sidebar">
+            <button id="sidebar-toggle" class="btn-toggle" title="Recolher/Expandir Menu">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <section id="side-header">
+                <div id="logo">
+                    <img src="src/image/logo-image.png" id="logo-image"><br>
+                    <h1 id="text-logo" class="logo-name">O NOVO MILIONÁRIO</h1>
+                </div>
+            </section>
+
+            <nav id="side-menu" class="menu">
+                <ul>
+                    <li>
+                        <a class="button-side-menu" id="side-button-inicio" href="homeApp.html">
+                            <i class="fa-solid fa-house icon-side-bar"></i>
+                            <span class="text-button-side menu-text">inicio</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="button-side-menu" id="side-button-trancacao" href="transacao.html">
+                            <i class="fas fa-exchange-alt icon-side-bar"></i> 
+                            <span class="text-button-side menu-text">transações</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="button-side-menu" id="side-button-investimento" href="investimentos.html">
+                            <i class="fa-solid fa-money-bill-trend-up icon-side-bar"></i>
+                            <span class="text-button-side menu-text">investimentos</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" title="Relatórios" class="button-side-menu">
+                            <i class="fas fa-chart-pie icon-side-bar"></i> 
+                            <span class="text-button-side menu-text">Relatórios</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="button-side-menu" id="side-button-metas" href="metas.html">
+                            <i class="fa-solid fa-bullseye icon-side-bar"></i>
+                            <span class="text-button-side menu-text">metas</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a class="button-side-menu" id="side-button-contas-bank" href="contas-banck.html">
+                            <i class="fa-solid fa-building-columns icon-side-bar"></i>
+                            <span class="text-button-side menu-text">Contas</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="button-side-menu"> 
+                            <i class="fa-solid fa-calculator icon-side-bar"></i>
+                            <span class="text-button-side menu-text">CALCULADORAS</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>    
+
+        <main id="corpo">
+            <header id="cabercalho">
+                <div id="logo-moblie">
+                    <img src="src/image/logo-image.png" id="logo-image"><br>
+                    <h1 id="text-logo">O NOVO MILIONÁRIO</h1>
+                </div>    
+
+                <button id="theme-toggle" class="btn-icon" title="Alternar Tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <i class="fa-solid fa-bell btn-icon"></i>
+                <div id="perfil">
+                    <div id="perfilimag"></div>
+
+                    <div id="nameperfil">
+                        <span class="username">name user</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+                
+                <div id="subMenuPerfil">
+                    <div id="conta" class="sub-menu-border-radius-top">
+                        <a href="minhaconta.html" class="sub-menu-border-radius-top">
+                            <i class="fa-solid fa-user"></i>
+                            minha conta
+                        </a>
                     </div>
 
-                    <div id="new-transacao">
-                        <button id="buttonTransacaoContraido" class="buttonTransacao buttonEfectHoverAzul">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-
-                        <button id="buttonTransacaoExpandido" class="buttonTransacao buttonEfectHoverAzul">NOVA TRANSAÇÃO</button>
+                    <div id="configuração">
+                        <a href="configuracao.html">
+                            <i class="fa-solid fa-gear"></i>
+                            configuração
+                        </a>
                     </div>
 
-                    <div id="typeOperation">
-                        <button id="deposit" class="operationTransaction">
-                            RECEITAS
-                        </button>
-
-                        <button id="expenses" class="operationTransaction">
-                            DESPESAS
-                        </button>
+                    <div id="meuPlano">
+                        <a href="myplan.html">
+                            <i class="fa-solid fa-file-signature"></i>
+                            Meu Plano
+                        </a>
                     </div>
-                </section>
 
-                <nav id="side-menu">
-                    <ul>
-                        <li>
-                            <a class="button-side-menu" id="side-button-inicio" href="homeApp.html">
-                                <i class="fa-solid fa-house icon-side-bar"></i>
-                                <span class="text-button-side">inicio</span>
-                            </a>
-                        </li>
+                    <div>
+                        <a href="suporte.html">
+                            <i class="fa-solid fa-headset"></i>
+                            suporte
+                        </a>
+                    </div>
 
-                        <li>
-                            <a class="button-side-menu" id="side-button-trancacao" href="transacao.html">
-                                <i class="fa-solid fa-sack-dollar icon-side-bar"></i>
-                                <span class="text-button-side">transações</span>
-                            </a>
-                        </li>
+                    <div id="sair" class="sub-menu-border-radius-botton">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        sair
+                    </div>
+                </div>
+            </header>
 
-                        <li>
-                            <a class="button-side-menu" id="side-button-investimento" href="investimentos.html">
-                                <i class="fa-solid fa-money-bill-trend-up icon-side-bar"></i>
-                                <span class="text-button-side">investimentos</span>
-                            </a>
-                        </li>
+            <div id="text-page">
+                <h1>Visão Geral do Patrimônio</h1>
+                <p class="text-muted" style="margin-top: 5px; font-size: 0.9rem;">Acompanhe sua evolução financeira em tempo real.</p>
+            </div>
 
-                        <li>
-                            <a class="button-side-menu" id="side-button-metas" href="metas.html">
-                                <i class="fa-solid fa-bullseye icon-side-bar"></i>
-                                <span class="text-button-side">metas</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a class="button-side-menu" id="side-button-contas-bank" href="contas-banck.html">
-                                <i class="fa-solid fa-building-columns icon-side-bar"></i>
-                                <span class="text-button-side">Contas</span>
-                            </a>
-                        </li>
+            <section id="dashboard-cards">
+                <div class="card balance">
+                    <div class="card-header-flex">
+                        <h3>Patrimônio Total</h3>
+                        <div class="controls-group">
+                            <select id="filter-patrimonio" class="premium-select" title="Filtrar origem do valor">
+                                <option value="liquido">Patrimônio Líquido</option>
+                                <option value="rec_inv">Receitas + Investimentos</option>
+                                <option value="inv">Só Investimentos</option>
+                                <option value="rec">Só Receitas</option>
+                            </select>
+                            <select id="currency-selector" class="premium-select currency" title="Moeda Real">
+                                <option value="BRL">BRL</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p class="amount" id="display-patrimonio">Carregando...</p>
+                    <small id="display-saldo-livre" class="text-muted" style="display:block; margin-top:5px; font-weight:500;">Saldo Livre: R$ 0,00</small>
+                </div>
+                
+                <div class="card income">
+                    <h3>Receitas <button id="btn-open-receita" class="btn-add">+</button></h3>
+                    <p class="amount" id="display-receitas">R$ 0,00</p>
+                </div>
+                <div class="card expense">
+                    <h3>Despesas <button id="btn-open-despesa" class="btn-add">+</button></h3>
+                    <p class="amount" id="display-despesas">R$ 0,00</p>
+                </div>
+                <div class="card investment">
+                    <h3>Investimentos <button id="btn-open-invest" class="btn-add btn-warning">+</button></h3>
+                    <p class="amount" id="display-investimentos" style="color: var(--color-warning);">R$ 0,00</p>
+                </div>
+            </section>
 
-                        <li>
-                            <a class="button-side-menu"> 
-                                <i class="fa-solid fa-calculator icon-side-bar"></i>
-                                <span class="text-button-side">CALCULADORAS</span>
-                            </a>
-                        </li>
-                    </ul>
+            <section id="charts-grid">
+                <div class="charts-section">
+                    <div class="chart-header">
+                        <h2>Evolução Financeira</h2>
+                        <div class="controls-group">
+                            <select id="chart-view-selector" class="premium-select">
+                                <option value="patri_inv">Patrimônio vs Investimentos</option>
+                                <option value="rec_desp">Receitas vs Despesas</option>
+                                <option value="all">Visão Global</option>
+                            </select>
+                            <button id="btn-clear-data" class="btn-danger premium-btn" title="Apagar Dados"><i class="fas fa-trash"></i> Limpar</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="financeChart"></canvas>
+                    </div>
+                </div>
 
-                    <button id="button-close-sider-bar" class="buttonOpenandClose buttonEfectHoverAzul">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
+                <div class="charts-section">
+                    <div class="chart-header">
+                        <h2>Carteira</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="investmentChart"></canvas>
+                    </div>
+                </div>
+            </section>
 
-                    <button id="button-open-sider-bar"  class="buttonOpenandClose buttonEfectHoverAzul">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
+            <section id="transactions-section">
+                <div class="section-header"><h2>Últimas Movimentações</h2></div>
+                <div id="table-container">
+                    <table id="transactions-table">
+                        <thead><tr><th>Data</th><th>Descrição</th><th>Categoria</th><th>Tipo</th><th>Valor</th></tr></thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
 
-                </nav>
-            </aside>    
+        <div id="modal-receita" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" id="close-receita">&times;</span>
+                <h2>Nova Receita</h2>
+                
+                <form id="form-receita">
+                    <div class="input-group">
+                        <label>Descrição</label>
+                        <input type="text" id="desc-receita" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Categoria</label>
+                        <div class="category-wrapper">
+                            <select id="cat-receita" class="premium-select-full" required></select>
+                            <button type="button" id="btn-add-cat-receita" class="btn-action-cat"><i class="fas fa-plus"></i></button>
+                            <button type="button" id="btn-rm-cat-receita" class="btn-action-cat rm-cat"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Valor (R$)</label>
+                        <input type="number" id="valor-receita" required min="0.01" step="0.01">
+                    </div>
+                    <button type="submit" class="btn-submit btn-success">Salvar Receita</button>
+                </form>
+            </div>
+        </div>
 
-            <main>
-                <header id="cabercalho">
-                    <div id="logo-moblie">
-                        <img src="src/image/logo-image.png" id="logo-image"></br>
-                        <h1 id="text-logo">O NOVO MILIONÁRIO</h1>
-                    </div>                    
+        <div id="modal-despesa" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" id="close-despesa">&times;</span>
+                <h2>Nova Despesa</h2>
 
-                    <i class="fa-solid fa-bell"></i>
-                    <div id="perfil">
-                        <div id="perfilimag"></div>
+                <form id="form-despesa">
+                    <div class="input-group">
+                        <label>Descrição</label>
+                        <input type="text" id="desc-despesa" required>
+                    </div>
 
-                        <div id="nameperfil">
-                            <span class="username">name user</span>
-                            <i class="fa-solid fa-chevron-down"></i>
+                    <div class="input-group">
+                        <label>Categoria</label>
+                        <div class="category-wrapper">
+                            <select id="cat-despesa" class="premium-select-full" required></select>
+
+                            <button type="button" id="btn-add-cat-despesa" class="btn-action-cat">
+                                <i class="fas fa-plus"></i>
+                            </button>
+
+                            <button type="button" id="btn-rm-cat-despesa" class="btn-action-cat rm-cat">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Valor (R$)</label>
+                        <input type="number" id="valor-despesa" required min="0.01" step="0.01">
+                    </div>
+
+                    <button type="submit" class="btn-submit btn-danger">Salvar Despesa</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="modal-investimento" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" id="close-invest">&times;</span>
+                <h2>Novo Investimento</h2>
+                
+                <form id="form-investimento">
+                    <div class="input-group">
+                        <label>Ativo / Descrição</label>
+                        <input type="text" id="desc-invest" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Categoria</label>
+                        <div class="category-wrapper">
+                            <select id="cat-invest" class="premium-select-full" required></select>
+                            <button type="button" id="btn-add-cat-invest" class="btn-action-cat">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            
+                            <button type="button" id="btn-rm-cat-invest" class="btn-action-cat rm-cat">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </div>
                     </div>
                     
-                    <div id="subMenuPerfil">
-                        <div id="conta" class="sub-menu-border-radius-top">
-                            <a href="minhaconta.html" class="sub-menu-border-radius-top">
-                                <i class="fa-solid fa-user"></i>
-                                minha conta
-                            </a>
-                        </div>
-
-                        <div id="configuração">
-                            <a href="configuracao.html">
-                                <i class="fa-solid fa-gear"></i>
-                                configuração
-                            </a>
-                        </div>
-
-                        <div id="meuPlano">
-                            <a href="myplan.html">
-                                <i class="fa-solid fa-file-signature"></i>
-                                Meu Plano
-                            </a>
-                        </div>
-
-                        <div>
-                            <a href="suporte.html">
-                                <i class="fa-solid fa-headset"></i>
-                                suporte
-                            </a>
-                        </div>
-
-                        <div id="sair" class="sub-menu-border-radius-botton">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            sair
-                        </div>
+                    <div class="input-group">
+                        <label>Valor (R$)</label>
+                        <input type="number" id="valor-invest" required min="0.01" step="0.01">
                     </div>
-                </header>
+                    <button type="submit" class="btn-submit btn-warning">Registrar</button>
+                </form>
+            </div>
+        </div>
 
-                <div id="alert" class="popUp">
-                    <i class="fa-solid fa-exclamation"></i>
-                    <h1 id="alertText"></h1>
+        <div id="modal-nova-categoria" class="modal" style="z-index: 1010;">
+            <div class="modal-content modal-sm">
+                <span class="close-btn" id="close-nova-categoria">&times;</span>
+                <h2><i class="fas fa-tags" style="color: var(--color-primary); margin-right: 10px;"></i> Nova Categoria</h2>
+                <p class="text-muted">Crie uma nova tag para organizar suas finanças.</p>
+                <form id="form-nova-categoria">
+                    <div class="input-group mt-3">
+                        <label>Nome da Categoria</label>
+                        <input type="text" id="nome-nova-categoria" required>
+                        <div id="cat-error-msg" class="error-msg">Esta categoria já existe!</div>
+                    </div>
 
-                    <button id="okAlert" class="buttonclose">OK</button>   
+                    <input type="hidden" id="tipo-nova-categoria" value="">
+                    <button type="submit" class="btn-submit btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="modal-confirm-delete" class="modal" style="z-index: 1010;">
+            <div class="modal-content modal-sm text-center">
+                <div class="warning-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
                 </div>
+                <h2>Remover Categoria</h2>
 
-                <div id="popUpNovaCategoria" class="popUp">
-
-                    <button id="buttonclosePopUpAddCategoria" class="buttonclose">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-
-                    <h3>NOVA CATEGORIA</h3>
-
-                    <div class="divContentAddTrasicao">
-                        <div id="namecategoria">NAME:</div>
-                        <input type="text" id="inputnameCategoria">
-                    </div>
-
-                    <div id="divDescriptionCategoria" class="divContentAddTrasicao">
-                        <i class="fa-solid fa-comments iconCatecoriaAddTrasacao"></i>
-                        <textarea id="descriptioncategoria" placeholder="descrição da categoria">
-                        </textarea>
-                    </div>
-
-                    <button id="adicionarCatecoria" class="adicionar">ADICIONAR</button>
-                </div>
+                <p class="text-muted">Tem certeza que deseja excluir 
+                    <strong id="delete-cat-name" style="color: var(--text-primary);"></strong>?
+                </p>
+                <input type="hidden" id="delete-cat-type">
                 
-                <div id="popUpAddreceita" class="popUp">
-                        <button id="buttonclosePopUpAddReceita" class="buttonclose">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-
-                        <h3 id="titleAddTrazacao"></h3>
-
-                        <div id="divValor" class="divContentAddTrasicao">
-                            <i class="fa-solid fa-money-bill iconCatecoriaAddTrasacao"></i>
-                            <input type="text" id="Valor" placeholder="valor">
-                            <select class="moedaTrasacao">
-                                <option selected>Real</option>
-                                <option>Dolar</option>
-                                <option>Euro</option>
-                            </select>
-                        </div>
-
-                        <div id="divcategoria" class="divContentAddTrasicao">
-                            <i class="fa-solid fa-font-awesome iconCatecoriaAddTrasacao"></i>
-                            <select id="categoria">
-                                <option selected></option>
-                            </select>
-
-                            <button id="buttonAddNewCategoria">nova categoria</button>
-                        </div>
-
-                        <div id="divDescriptionReceita" class="divContentAddTrasicao">
-                            <i class="fa-solid fa-comments iconCatecoriaAddTrasacao"></i>
-                            <textarea id="descriptionReceita" placeholder="descrição da trasacao">
-                            </textarea>
-                        </div>
-
-                        <div id="divDateTrasacao" class="divContentAddTrasicao">
-                            <i class="fa-solid fa-calendar-days iconCatecoriaAddTrasacao"></i>
-                            <input type="date" id="datenewtrasicao">
-                        </div>
-
-
-                        <button id="adicionartrasacao" class="adicionar">adicionar</button>
+                <div class="modal-actions">
+                    <button id="btn-cancel-delete" class="btn-submit btn-secondary">Cancelar</button>
+                    <button id="btn-confirm-delete" class="btn-submit btn-danger">Sim, Remover</button>
                 </div>
-
-
-                <div id="text-page">
-                    <h2>inicio</h2>
-
-                    <h3>Olá, <span id="username-welcome">name user completo</span> seja bem vindo </h3>
-                </div>
-                
-                <section id="despesas-receitas">
-                    <div id="select-bank"></div>
-
-                    <div id="select-mes"></div>
-                    <div id="saldo-atual"></div>
-                    <div id="conterner-trasacao">
-                        <div id="despesas"></div>
-                        <div id="receitas"></div>
-                    </div>
-                </section>
-            </main>
+            </div>
         </div>
 
         <script src="src/js/homeapp.js"></script>
+        <script src="src/js/dashboard.js"></script>
         <script src="https://kit.fontawesome.com/c978c073eb.js" crossorigin="anonymous"></script>
-    </body>      
+    </body>       
 </html>

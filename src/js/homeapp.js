@@ -1,183 +1,44 @@
 "use strict";
-/* divs*/
-const body = document.querySelector("body");
-const divSideBar = document.getElementById("side-bar");
-const divTypeOperation = document.getElementById("typeOperation");
-const pouUpNewTrasacao = document.getElementById("popUpAddreceita");
-const popUpNewCategoria = document.getElementById("popUpNovaCategoria");
-const divAlert = document.getElementById("alert");
-const divperfil = document.getElementById("perfil");
-const divsubMenuPerfil = document.getElementById("subMenuPerfil");
-/* buttons */
-const buttonCloseSiderBar = document.getElementById("button-close-sider-bar");
-const buttonOpenSiderBar = document.getElementById("button-open-sider-bar");
-const buttonNewTrasacaoopen = document.getElementById('buttonTransacaoExpandido');
-const buttonNewTrasacaoclose = document.getElementById("buttonTransacaoContraido");
-const linkSiderBar = document.querySelectorAll(".button-side-menu");
-const textSiderBar = document.querySelectorAll(".text-button-side");
-const buttonReceita = document.getElementById("deposit");
-const buttonDespesa = document.getElementById("expenses");
-const buttonclosepouUpNewTrasacao = document.getElementById("buttonclosePopUpAddReceita");
-const buttonNovaCategoriaTrasacao = document.getElementById("buttonAddNewCategoria");
-const buttonclosePopUpAddCategoria = document.getElementById("buttonclosePopUpAddCategoria");
-const buttonAdicionarcategoria = document.getElementById("adicionarCatecoria");
-const buttonclosePopUpAviso = document.getElementById("okAlert");
-/* texts */
-const textLogo = document.getElementById("text-logo");
-const textAlert = document.getElementById("alertText");
-/*inputs*/
-const valor = document.getElementById("Valor");
-const description = document.getElementById("descriptionReceita");
-const nameCategoria = document.getElementById("inputnameCategoria");
-/* outros*/
-let isWindowOpenNewtrasacao = false;
-let isWindowOpenSubPerfilMenu = false;
-/* event */
-divperfil.addEventListener("click", (event) => {
-    isWindowOpenSubPerfilMenu = !isWindowOpenSubPerfilMenu;
-    if (isWindowOpenSubPerfilMenu) {
-        openSubMenuPerfil();
+// Aguarda o documento carregar
+document.addEventListener('DOMContentLoaded', () => {
+    // ================= 1. MODO DARK / LIGHT =================
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = themeToggleBtn.querySelector('i');
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark')
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
-    else {
-        closeSubMenuPerfil();
+    themeToggleBtn.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        if (theme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+    });
+    // ================= 2. RECOLHER / EXPANDIR MENU =================
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+    // Verifica na memória se o usuário já havia deixado o menu recolhido
+    const isSidebarCollapsed = localStorage.getItem('sidebarCollapsed');
+    if (isSidebarCollapsed === 'true') {
+        sidebar.classList.add('collapsed');
     }
-    event.stopPropagation();
+    // Ação de clicar no botão Hambúrguer
+    sidebarToggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        if (sidebar.classList.contains('collapsed')) {
+            localStorage.setItem('sidebarCollapsed', 'true');
+        }
+        else {
+            localStorage.setItem('sidebarCollapsed', 'false');
+        }
+    });
 });
-buttonCloseSiderBar.addEventListener("click", () => {
-    closeSideBar();
-});
-buttonOpenSiderBar.addEventListener("click", () => {
-    OpenSiderBar();
-});
-buttonNewTrasacaoopen.addEventListener("click", (event) => {
-    isWindowOpenNewtrasacao = !isWindowOpenNewtrasacao;
-    if (isWindowOpenNewtrasacao) {
-        divTypeOperation.style.left = "210px";
-        divTypeOperation.style.top = "170px";
-        newTrasacao();
-    }
-    else {
-        closenewtrasacao();
-    }
-    event.stopPropagation();
-});
-buttonNewTrasacaoclose.addEventListener("click", (event) => {
-    isWindowOpenNewtrasacao = !isWindowOpenNewtrasacao;
-    if (isWindowOpenNewtrasacao) {
-        divTypeOperation.style.left = "90px";
-        divTypeOperation.style.top = "130px";
-        newTrasacao();
-    }
-    else {
-        closenewtrasacao();
-    }
-    event.stopPropagation();
-});
-document.addEventListener("click", (event) => {
-    if ((event.target instanceof Node && isWindowOpenNewtrasacao && !divTypeOperation.contains(event.target) && event.target !== buttonNewTrasacaoopen) || ((event.target instanceof Node && isWindowOpenSubPerfilMenu && !divsubMenuPerfil.contains(event.target)))) {
-        closenewtrasacao();
-        closeSubMenuPerfil();
-        isWindowOpenSubPerfilMenu = false;
-        isWindowOpenNewtrasacao = false;
-    }
-});
-buttonReceita.addEventListener("click", () => {
-    openPopUpNewtrasacao();
-    const titlePopupNewtrasacao = document.getElementById("titleAddTrazacao");
-    titlePopupNewtrasacao.textContent = "RECEITA";
-});
-buttonDespesa.addEventListener("click", () => {
-    openPopUpNewtrasacao();
-    const titlePopupNewtrasacao = document.getElementById("titleAddTrazacao");
-    titlePopupNewtrasacao.textContent = "DESPESA";
-});
-buttonclosepouUpNewTrasacao.addEventListener("click", closePopUpNewtrasacao);
-buttonNovaCategoriaTrasacao.addEventListener("click", newCategoriaTrasacao);
-buttonclosePopUpAddCategoria.addEventListener("click", closeNewCategoriatrasacao);
-buttonAdicionarcategoria.addEventListener("click", () => {
-    let categoria = nameCategoria.value;
-    AddNewCategoria(categoria);
-});
-buttonclosePopUpAviso.addEventListener("click", closeAviso);
-/* fuction */
-function openSubMenuPerfil() {
-    divsubMenuPerfil.style.display = "block";
-    closenewtrasacao();
-}
-function closeSubMenuPerfil() {
-    divsubMenuPerfil.style.display = "none";
-    closenewtrasacao();
-}
-function closeSideBar() {
-    divSideBar.style.width = "8vw";
-    textLogo.style.display = "none";
-    buttonNewTrasacaoopen.style.display = "none";
-    buttonNewTrasacaoclose.style.display = "block";
-    for (let indexTextSiderbar = 0; indexTextSiderbar < textSiderBar.length; indexTextSiderbar++) {
-        textSiderBar[indexTextSiderbar].style.display = "none";
-    }
-    for (let indexLinkSiderbar = 0; indexLinkSiderbar < linkSiderBar.length; indexLinkSiderbar++) {
-        linkSiderBar[indexLinkSiderbar].style.width = "50px";
-    }
-    buttonCloseSiderBar.style.display = "none";
-    buttonOpenSiderBar.style.display = "block";
-}
-;
-function OpenSiderBar() {
-    divSideBar.style.width = "20vw";
-    textLogo.style.display = "block";
-    buttonNewTrasacaoopen.style.display = "block";
-    buttonNewTrasacaoclose.style.display = "none";
-    for (let indexTextSiderbar = 0; indexTextSiderbar < textSiderBar.length; indexTextSiderbar++) {
-        textSiderBar[indexTextSiderbar].style.display = "block";
-    }
-    for (let indexLinkSiderbar = 0; indexLinkSiderbar < linkSiderBar.length; indexLinkSiderbar++) {
-        linkSiderBar[indexLinkSiderbar].style.width = "200px";
-    }
-    buttonCloseSiderBar.style.display = "block";
-    buttonOpenSiderBar.style.display = "none";
-}
-function newTrasacao() {
-    divTypeOperation.style.display = "flex";
-}
-function closenewtrasacao() {
-    divTypeOperation.style.display = "none";
-}
-function openPopUpNewtrasacao() {
-    pouUpNewTrasacao.style.display = "flex";
-    closenewtrasacao();
-}
-function closePopUpNewtrasacao() {
-    valor.value = "";
-    description.value = "";
-    pouUpNewTrasacao.style.display = "none";
-}
-function newCategoriaTrasacao() {
-    buttonclosepouUpNewTrasacao.disabled = true;
-    popUpNewCategoria.style.display = "flex";
-}
-function closeNewCategoriatrasacao() {
-    popUpNewCategoria.style.display = "none";
-    buttonclosepouUpNewTrasacao.disabled = false;
-}
-function AddNewCategoria(valorOption) {
-    textAlert.textContent = "";
-    const selectCategoria = document.getElementById("categoria");
-    if (nameCategoria.value !== "") {
-        const option = document.createElement("option");
-        option.value = valorOption;
-        option.textContent = valorOption;
-        selectCategoria.appendChild(option);
-        closeNewCategoriatrasacao();
-    }
-    else {
-        buttonclosePopUpAddCategoria.disabled = true;
-        textAlert.textContent = "o nome da categoria esta vazio, digite um nome";
-        divAlert.style.display = "flex";
-    }
-}
-function closeAviso() {
-    buttonclosePopUpAddCategoria.disabled = false;
-    textAlert.textContent = "";
-    divAlert.style.display = "none";
-}

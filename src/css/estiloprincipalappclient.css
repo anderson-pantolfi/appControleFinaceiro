@@ -1,0 +1,354 @@
+:root{
+    --red: #f73c4f;
+    --bg-body: #f8fafc; /* Slate 50 */
+    --bg-sidebar: #ffffff;
+    --cinza-100: #F8F9FA;
+    --cinza-200: #b3b3b3;
+    --cinza-300: #6C7588;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+    --shadow-lg: 0 15px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01);
+    
+    --radius-md: 12px;
+    --radius-lg: 24px; 
+}
+
+[data-theme="dark"] {
+    --bg-body: #0f172a; 
+    --bg-sidebar: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4);
+    --shadow-lg: 0 15px 25px -5px rgba(0,0,0,0.5);
+}
+
+body {
+    background-color: var(--bg-body); 
+    color: var(--text-primary); 
+    display: flex; 
+    min-height: 100vh; 
+    transition: 0.4s ease;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-color); 
+    border-radius: 10px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: var(--text-secondary);
+}
+
+#sidebar{    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 260px; 
+    height: 100vh; 
+    position: sticky; 
+    top: 0;
+    border-right: 1px solid var(--border-color);
+    background-color: var(--bg-sidebar); 
+    transition: 0.4s ease;
+    box-shadow: var(--shadow-sm); 
+    z-index: 10; 
+    padding: 15px; 
+}
+
+.btn-toggle { 
+    position: absolute; 
+    top: 35px; 
+    right: -20px;
+    width: 40px; 
+    height: 40px; 
+    background-color: var(--bg-sidebar); 
+    color: var(--text-primary); 
+    border: 1px solid var(--border-color); 
+    box-shadow: var(--shadow-sm); 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+    font-size: 1rem; 
+    transition: all 0.3s ease; 
+    z-index: 100;
+}
+
+.btn-toggle:hover { 
+    color: var(--color-primary); 
+    transform: scale(1.1);
+}
+#sidebar.collapsed { 
+    width: 150px; 
+}
+
+#sidebar.collapsed .logo-name, #sidebar.collapsed .menu-text { 
+    display: none; 
+}
+
+#sidebar.collapsed .logo { 
+    padding: 30px 0; 
+    text-align: center; 
+}
+
+#sidebar.collapsed .logo h2 { 
+    font-size: 1.8rem; 
+}
+
+#sidebar.collapsed .menu a {
+     justify-content: center;
+      padding: 15px 0; 
+      gap: 0; 
+}
+
+#sidebar.collapsed .menu a i { 
+    font-size: 2rem; 
+}
+
+#sidebar.collapsed .btn-toggle { 
+    transform: rotate(180deg); 
+}
+
+#corpo{
+    display: flex;
+    flex-direction: column; 
+    flex: 1;
+}
+
+#cabercalho {    
+    padding: 15px;
+    background-color: var(--bg-card);
+    transition: background-color 0.4s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: flex-end;
+    padding-right: 50px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#logo{
+    flex-direction: column;
+}
+
+#text-logo{
+    font-family: "Montserrat-ExtraBold";
+    text-align: center;
+    color: var(--text-primary);
+}
+
+#side-menu{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.buttonEfectHoverAzul:hover{
+    background-color: var(--azul-escuro2);
+}
+
+#button-close-sider-bar{
+    top: -670px;
+    left: 215px;
+}
+
+#button-open-sider-bar{
+    display: none;
+    top: -620px;
+    left: 80px;
+}
+
+ul{
+    list-style: none;
+}
+
+.button-side-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin-top: 5px;
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.button-side-menu:hover{
+    background-color: var(--azul-branco);
+    border-radius: 30px;
+    color: #4164D1;
+}
+
+.icon-side-bar{
+    font-size: 30px;
+}
+
+.text-button-side{
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-family: "Montserrat-Medium";
+    font-weight: bolder;
+}
+
+main{    
+    z-index: 1;
+}
+
+
+#perfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0px;
+    text-decoration: none;
+}
+
+#perfil:hover{
+    background-color: var(--azul-branco);
+    border-radius: 40px;
+}
+
+#perfilimag{
+    margin-left: 15px;
+    background-color: red;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+}
+
+#nameperfil{
+    text-transform: uppercase;
+    font-family: "Montserrat-Bold";
+    padding-right: 30px;
+    color: var(--text-primary);
+}
+
+#perfil:hover{
+    color: var(--azul-escuro);
+}
+
+#subMenuPerfil{
+    position: absolute;
+    display: none;
+    top: 95px;
+    right: 20px;
+    width: 30%;
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    background-color: var(--bg-card);
+}
+
+#subMenuPerfil > div{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#subMenuPerfil > div:hover{   
+    background-color: var(--azul-roal);
+    color: var(--branco);
+}
+
+.sub-menu-border-radius-top{
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.sub-menu-border-radius-botton{
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#subMenuPerfil > div i {
+    margin-right: 10px;
+}
+
+#subMenuPerfil > div a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    text-align: justify;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-family: "Montserrat-Bold";
+    padding: 25px 5px;
+    font-size: 1.2em;
+    color: var(--text-primary);
+}
+
+#subMenuPerfil > div a:hover{
+    color: white;
+}
+
+#subMenuPerfil #sair{
+    padding: 25px 5px;
+    text-align: justify;
+    text-transform: capitalize;
+    font-family: "Montserrat-Bold";
+    font-size: 1.2em;
+    color: var(--red);
+}
+
+#subMenuPerfil #sair:hover{    
+    background-color: var(--red);
+    color: var(--branco);
+}
+
+.fa-chevron-down{
+    margin-left: 10px;
+}
+
+.btn-icon { 
+    background: var(--bg-card); 
+    border: 1px solid var(--border-color); 
+    width: 45px; height: 45px; 
+    border-radius: 50%; color: 
+    var(--text-secondary); 
+    font-size: 2em; 
+    cursor: pointer; 
+    transition: all 0.2s ease;
+    display: flex; align-items: center;
+    justify-content: center; 
+    box-shadow: var(--shadow-sm); 
+    margin-right: 15px;
+}
+
+.btn-icon:hover { 
+    color: var(--color-primary); 
+    transform: translateY(-2px); 
+    box-shadow: var(--shadow-md);
+}
+
+.popUp{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px; 
+    background-color: var(--bg-card);
+}
+
+#logo-moblie{
+    display: none;
+}

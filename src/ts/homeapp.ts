@@ -1,217 +1,49 @@
-/* divs*/
-const body = document.querySelector("body") as HTMLBodyElement;
-const divSideBar = document.getElementById("side-bar") as HTMLDivElement;
-const divTypeOperation = document.getElementById("typeOperation") as HTMLDivElement;
-const pouUpNewTrasacao = document.getElementById("popUpAddreceita") as HTMLDivElement;
-const popUpNewCategoria = document.getElementById("popUpNovaCategoria") as HTMLDivElement;
-const divAlert = document.getElementById("alert") as HTMLDivElement;
-const divperfil = document.getElementById("perfil") as HTMLDivElement;
-const divsubMenuPerfil = document.getElementById("subMenuPerfil") as HTMLDivElement;
-
-/* buttons */
-const buttonCloseSiderBar = document.getElementById("button-close-sider-bar") as HTMLButtonElement;
-const buttonOpenSiderBar = document.getElementById("button-open-sider-bar") as HTMLButtonElement;
-const buttonNewTrasacaoopen = document.getElementById('buttonTransacaoExpandido') as HTMLButtonElement;
-const buttonNewTrasacaoclose = document.getElementById("buttonTransacaoContraido") as HTMLButtonElement;
-const linkSiderBar = document.querySelectorAll(".button-side-menu") as NodeListOf<Element>;
-const textSiderBar = document.querySelectorAll(".text-button-side") as NodeListOf<Element>;
-const buttonReceita = document.getElementById("deposit") as HTMLButtonElement;
-const buttonDespesa = document.getElementById("expenses") as HTMLButtonElement;
-const buttonclosepouUpNewTrasacao = document.getElementById("buttonclosePopUpAddReceita") as HTMLButtonElement;
-const buttonNovaCategoriaTrasacao = document.getElementById("buttonAddNewCategoria") as HTMLButtonElement;
-const buttonclosePopUpAddCategoria = document.getElementById("buttonclosePopUpAddCategoria") as HTMLButtonElement;
-const buttonAdicionarcategoria = document.getElementById("adicionarCatecoria") as HTMLButtonElement;
-const buttonclosePopUpAviso = document.getElementById("okAlert") as HTMLButtonElement;
-
-/* texts */
-const textLogo = document.getElementById("text-logo") as HTMLElement;
-const textAlert = document.getElementById("alertText") as HTMLElement;
-
-/*inputs*/
-const valor = document.getElementById("Valor") as HTMLInputElement; 
-const description = document.getElementById("descriptionReceita") as HTMLTextAreaElement;
-const nameCategoria = document.getElementById("inputnameCategoria") as HTMLInputElement;
-
-/* outros*/
-let isWindowOpenNewtrasacao = false;
-let isWindowOpenSubPerfilMenu = false;
-
-/* event */
-divperfil.addEventListener("click", (event)=>{
-    isWindowOpenSubPerfilMenu = !isWindowOpenSubPerfilMenu;
-    if(isWindowOpenSubPerfilMenu){
-        openSubMenuPerfil();
-    }else{
-        closeSubMenuPerfil();
-    }
-    event.stopPropagation();
-});
-
-buttonCloseSiderBar.addEventListener("click", () =>{
-    closeSideBar();
-});
-
-buttonOpenSiderBar.addEventListener("click", () => {
-    OpenSiderBar();
-});
-
-buttonNewTrasacaoopen.addEventListener("click", (event) => {
-    isWindowOpenNewtrasacao = !isWindowOpenNewtrasacao ; 
-    if (isWindowOpenNewtrasacao ) {
-        divTypeOperation.style.left = "210px"
-        divTypeOperation.style.top = "170px"
-        newTrasacao(); 
-    } else {
-        closenewtrasacao(); 
-    }
-    event.stopPropagation(); 
-});
-
-buttonNewTrasacaoclose.addEventListener("click", (event) => {
-    isWindowOpenNewtrasacao  = !isWindowOpenNewtrasacao ; 
-    if (isWindowOpenNewtrasacao) {
-        divTypeOperation.style.left = "90px"
-        divTypeOperation.style.top = "130px"
-        newTrasacao(); 
-    } else {
-        closenewtrasacao(); 
-    }
-    event.stopPropagation(); 
-});
-
-document.addEventListener("click", (event) => {
-    if ( (event.target instanceof Node && isWindowOpenNewtrasacao && !divTypeOperation.contains(event.target) && event.target !== buttonNewTrasacaoopen) || ((event.target instanceof Node && isWindowOpenSubPerfilMenu && !divsubMenuPerfil.contains(event.target)))){
-        closenewtrasacao(); 
-        closeSubMenuPerfil();
-        isWindowOpenSubPerfilMenu = false;
-        isWindowOpenNewtrasacao  = false; 
-    }
-});
-
-buttonReceita.addEventListener("click", () =>{
-    openPopUpNewtrasacao();
-    const titlePopupNewtrasacao = document.getElementById("titleAddTrazacao") as HTMLElement;
-    titlePopupNewtrasacao.textContent = "RECEITA";
-});
-
-buttonDespesa.addEventListener("click", () =>{
-    openPopUpNewtrasacao();
-    const titlePopupNewtrasacao = document.getElementById("titleAddTrazacao") as HTMLElement;
-    titlePopupNewtrasacao.textContent = "DESPESA";
-});
-
-buttonclosepouUpNewTrasacao.addEventListener("click", closePopUpNewtrasacao);
-
-buttonNovaCategoriaTrasacao.addEventListener("click", newCategoriaTrasacao);
-
-buttonclosePopUpAddCategoria.addEventListener("click", closeNewCategoriatrasacao);
-
-buttonAdicionarcategoria.addEventListener("click", () =>{
-    let categoria = nameCategoria.value;
-    AddNewCategoria(categoria);
-});
-
-buttonclosePopUpAviso.addEventListener("click", closeAviso);
-
-/* fuction */
-function openSubMenuPerfil(){
-    divsubMenuPerfil.style.display = "block";
-    closenewtrasacao();
-}
-
-function closeSubMenuPerfil(){
-    divsubMenuPerfil.style.display = "none";
-    closenewtrasacao();
-}
-
-function closeSideBar(){
-    divSideBar.style.width = "8vw";
-
-    textLogo.style.display = "none";
-
-    buttonNewTrasacaoopen.style.display = "none";
-    buttonNewTrasacaoclose.style.display = "block";
+// Aguarda o documento carregar
+document.addEventListener('DOMContentLoaded', () => {
     
-    for(let indexTextSiderbar = 0; indexTextSiderbar < textSiderBar.length; indexTextSiderbar++ ){
-        (textSiderBar[indexTextSiderbar] as HTMLSpanElement).style.display = "none";
+    // ================= 1. MODO DARK / LIGHT =================
+    const themeToggleBtn = document.getElementById('theme-toggle') as HTMLButtonElement;
+    const themeIcon = themeToggleBtn.querySelector('i') as HTMLElement;
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme); 
+        if (currentTheme === 'dark') themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
 
-    for(let indexLinkSiderbar = 0; indexLinkSiderbar < linkSiderBar.length; indexLinkSiderbar++){
-        (linkSiderBar[indexLinkSiderbar] as HTMLAnchorElement).style.width = "50px" 
-    }
+    themeToggleBtn.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        
+        if (theme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+    });
 
-    buttonCloseSiderBar.style.display = "none";
-    buttonOpenSiderBar.style.display = "block";
-};
-
-function OpenSiderBar(){
-    divSideBar.style.width = "20vw";
-
-    textLogo.style.display = "block";
-
-    buttonNewTrasacaoopen.style.display = "block";
-    buttonNewTrasacaoclose.style.display = "none";
+    // ================= 2. RECOLHER / EXPANDIR MENU =================
+    const sidebar = document.getElementById('sidebar') as HTMLElement;
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle') as HTMLButtonElement;
     
-    for(let indexTextSiderbar = 0; indexTextSiderbar < textSiderBar.length; indexTextSiderbar++ ){
-        (textSiderBar[indexTextSiderbar] as HTMLSpanElement).style.display = "block";
+    // Verifica na memória se o usuário já havia deixado o menu recolhido
+    const isSidebarCollapsed = localStorage.getItem('sidebarCollapsed');
+    
+    if (isSidebarCollapsed === 'true') {
+        sidebar.classList.add('collapsed');
     }
 
-    for(let indexLinkSiderbar = 0; indexLinkSiderbar < linkSiderBar.length; indexLinkSiderbar++){
-        (linkSiderBar[indexLinkSiderbar] as HTMLAnchorElement).style.width = "200px" 
-    }
+    // Ação de clicar no botão Hambúrguer
+    sidebarToggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        if (sidebar.classList.contains('collapsed')) {
+            localStorage.setItem('sidebarCollapsed', 'true');
+        } else {
+            localStorage.setItem('sidebarCollapsed', 'false');
+        }
+    });
 
-    buttonCloseSiderBar.style.display = "block";
-    buttonOpenSiderBar.style.display = "none";
-}
-
-function newTrasacao(){
-    divTypeOperation.style.display = "flex"
-}
-
-function closenewtrasacao(){
-    divTypeOperation.style.display = "none"
-}
-
-function openPopUpNewtrasacao(){
-    pouUpNewTrasacao.style.display = "flex";
-    closenewtrasacao();
-}
-
-function closePopUpNewtrasacao(){
-    valor.value = "";
-    description.value = "";
-    pouUpNewTrasacao.style.display = "none";
-}
-
-function newCategoriaTrasacao(){
-    buttonclosepouUpNewTrasacao.disabled = true;
-    popUpNewCategoria.style.display = "flex";
-}
-
-function closeNewCategoriatrasacao(){
-    popUpNewCategoria.style.display = "none";
-    buttonclosepouUpNewTrasacao.disabled = false;
-}
-
-function AddNewCategoria(valorOption:string){
-    textAlert.textContent = "";
-    const selectCategoria = document.getElementById("categoria") as HTMLSelectElement;
-
-    if(nameCategoria.value !== ""){
-        const option = document.createElement("option") as HTMLOptionElement;
-        option.value = valorOption;
-        option.textContent = valorOption;
-        selectCategoria.appendChild(option);
-        closeNewCategoriatrasacao();
-    }else{
-        buttonclosePopUpAddCategoria.disabled = true;
-        textAlert.textContent = "o nome da categoria esta vazio, digite um nome";
-        divAlert.style.display = "flex";
-    }
-}
-
-function closeAviso(){
-    buttonclosePopUpAddCategoria.disabled = false;
-    textAlert.textContent = "";
-    divAlert.style.display = "none";
-}
+});

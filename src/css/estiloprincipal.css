@@ -1,17 +1,7 @@
-:root {
-    --azul-branco: #F5F5F5;
-    --azul-escuro: #0030C6;
+:root {  
     --azul-roal: #2196F3;
-    --azul-bebe: #b0d8f8;
+    --azul-bebe: #b0d8f8; 
     --azul-escuro2: hsl(225, 97%, 27%);
-    --laranja-alert: #ff7300;
-    --gren: #37d65c;
-    --red: #f73c4f;
-    --gren-escuro:  #1E7145;
-    --red-escuro: #B00020;
-    --cinza-100: #F8F9FA;
-    --cinza-200: #b3b3b3;
-    --cinza-300: #6C7588;
     --preto: #000000;
     --branco: #ffffff;
 }
@@ -43,13 +33,14 @@
 }
 
 body{
-    background-color: #757474;
+    background-color: var(--bg-body);
 }
 
 #corpo{  
     max-width: 1500px;
-    background-color: var(--cinza-100);;
+    background-color: var(--bg-body);
     min-height: 100vh;
+    transition: background-color 0.4s ease;
 }
 
 #logo{
