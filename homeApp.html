@@ -221,7 +221,7 @@
 
         <div id="modal-receita" class="modal">
             <div class="modal-content">
-                <span class="close-btn" id="close-receita">&times;</span>
+                <button class="close-btn" id="close-receita">&times;</button>
                 <h2>Nova Receita</h2>
                 
                 <form id="form-receita">
@@ -248,7 +248,7 @@
 
         <div id="modal-despesa" class="modal">
             <div class="modal-content">
-                <span class="close-btn" id="close-despesa">&times;</span>
+                <button class="close-btn" id="close-despesa">&times;</button>
                 <h2>Nova Despesa</h2>
 
                 <form id="form-despesa">
@@ -284,7 +284,7 @@
 
         <div id="modal-investimento" class="modal">
             <div class="modal-content">
-                <span class="close-btn" id="close-invest">&times;</span>
+                <button class="close-btn" id="close-invest">&times;</button>
                 <h2>Novo Investimento</h2>
                 
                 <form id="form-investimento">
@@ -318,14 +318,15 @@
 
         <div id="modal-nova-categoria" class="modal" style="z-index: 1010;">
             <div class="modal-content modal-sm">
-                <span class="close-btn" id="close-nova-categoria">&times;</span>
+                <button class="close-btn" id="close-nova-categoria">&times;</button>
                 <h2><i class="fas fa-tags" style="color: var(--color-primary); margin-right: 10px;"></i> Nova Categoria</h2>
                 <p class="text-muted">Crie uma nova tag para organizar suas finanças.</p>
                 <form id="form-nova-categoria">
                     <div class="input-group mt-3">
-                        <label>Nome da Categoria</label>
-                        <input type="text" id="nome-nova-categoria" required>
-                        <div id="cat-error-msg" class="error-msg">Esta categoria já existe!</div>
+                        <label for="nomecategoria">Nome da Categoria:
+                            <input type="text" id="nome-nova-categoria" name="nomecategoria" required>
+                            <div id="cat-error-msg" class="error-msg">Esta categoria já existe!</div>
+                        </label>
                     </div>
 
                     <input type="hidden" id="tipo-nova-categoria" value="">

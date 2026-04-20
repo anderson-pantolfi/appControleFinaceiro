@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isSidebarCollapsed === 'true') {
         sidebar.classList.add('collapsed');
     }
-    // Ação de clicar no botão Hambúrguer
     sidebarToggleBtn.addEventListener('click', () => {
         sidebar.classList.toggle('collapsed');
         if (sidebar.classList.contains('collapsed')) {

@@ -4,7 +4,7 @@ s:root {
     --text-primary: #0f172a; /* Slate 900 */
     --text-secondary: #64748b;
     --bg-card: #ffffff;
-    --bg-body: #f8fafc; 
+    --bg-body: #e8e9e9; 
 
     /* Cores de Ação */
     --color-primary: #4f46e5; /* Indigo 600 */
@@ -71,18 +71,18 @@ s:root {
 }
 
 .premium-select:focus, .premium-select-full:focus { 
-    border-color: var(--color-primary); 
+    border-color: var(--bg-body); 
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); 
 }
 
 .premium-select.currency { 
-    background-color: rgba(79, 70, 229, 0.08); 
+    background-color: var(ppbg-body); 
     color: var(--color-primary); 
     border-color: transparent; 
 }
 
 .premium-select.currency:hover { 
-    background-color: rgba(79, 70, 229, 0.15); 
+    background-color:  var(--bg-body);
 }
 
 /* Botões */
@@ -378,7 +378,16 @@ tbody tr:hover {
     font-weight: 600; 
 }
 
-.input-group input { width: 100%; padding: 14px 18px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background-color: var(--bg-body); color: var(--text-primary); font-size: 1rem; transition: 0.2s; outline: none; }
+.input-group input { 
+    width: 100%; 
+    padding: 14px 18px; 
+    border: 1px solid var(--border-color); 
+    border-radius: var(--radius-md); 
+    background-color: var(--bg-body); 
+    color: var(--text-primary); 
+    font-size: 1rem; 
+    transition: 0.2s; 
+    outline: none; }
 
 .input-group input:focus { 
     border-color: var(--color-primary);
