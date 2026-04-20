@@ -1,14 +1,63 @@
 "use strict";
 document.addEventListener('DOMContentLoaded', () => {
+    var _a, _b, _c;
     // ================= 1. modal categoria =================  
-    const PopUpCategoria = document.getElementById("modal-nova-categoria"), ButtonClosePopUpCategoria = document.getElementById("close-nova-categoria"), InputTipoNovaCat = document.getElementById('tipo-nova-categoria');
+    const PopUpCategoria = document.getElementById("modal-nova-categoria"), ButtonClosePopUpCategoria = document.getElementById("close-nova-categoria"), InputTipoNovaCat = document.getElementById('tipo-nova-categoria'), InputNomenovaCategoria = document.getElementById("nome-nova-categoria"), DivErros = document.getElementById('cat-error-msg'), FormNovacategoria = document.getElementById("form-nova-categoria");
+    let catsReceita = JSON.parse((_a = localStorage.getItem('catsReceita')) !== null && _a !== void 0 ? _a : "null") || ["SALÁRIO", "INVESTIMENTOS", "SERVIÇOS", "OUTROS"];
+    let catsDespesa = JSON.parse((_b = localStorage.getItem('catsDespesa')) !== null && _b !== void 0 ? _b : "null") || ["MORADIA", "ALIMENTAÇÃO", "TRANSPORTE", "LAZER", "SAUDE"];
+    let catsInvest = JSON.parse((_c = localStorage.getItem('catsInvest')) !== null && _c !== void 0 ? _c : "null") || ["RENDA FIXA", "AÇÕES (BOLSA)", "FIIS", "CRIPTOMOEDAS"];
     const AbrirNewCategoria = (tipo) => {
         InputTipoNovaCat.value = tipo;
+        InputNomenovaCategoria.value = "";
         PopUpCategoria.style.display = "flex";
+        InputNomenovaCategoria.focus();
+        DivErros.style.display = "none";
     };
+    const RenderizarCategoria = () => {
+        const Popular = (id, lista) => {
+            const SelectCategoria = document.getElementById(id);
+            SelectCategoria.innerHTML = "";
+            lista.forEach(categoria => {
+                SelectCategoria.add(new Option(categoria, categoria));
+            });
+        };
+        Popular('cat-receita', catsReceita);
+        Popular('cat-despesa', catsDespesa);
+        Popular('cat-invest', catsInvest);
+    };
+    FormNovacategoria.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const Categoria = InputNomenovaCategoria.value.trim().toUpperCase(), Tipo = InputTipoNovaCat.value.toLocaleUpperCase();
+        if (Categoria === "") {
+            DivErros.style.display = "block";
+            DivErros.textContent = "input esta Nullo, por favor preencher!";
+            return;
+        }
+        const Listas = {
+            RECEITA: catsReceita,
+            DESPESA: catsDespesa,
+            INVESTIMENTO: catsInvest
+        }, storageKeys = {
+            RECEITA: 'catsReceita',
+            DESPESA: 'catsDespesa',
+            INVESTIMENTO: 'catsInvest'
+        };
+        if (Listas[Tipo].some(categoria => categoria.toUpperCase() === Categoria)) {
+            DivErros.style.display = "block";
+            DivErros.textContent = "Esta categoria já existe!";
+            return;
+        }
+        Listas[Tipo].push(Categoria);
+        localStorage.setItem(storageKeys[Tipo], JSON.stringify(Listas[Tipo]));
+        RenderizarCategoria();
+        PopUpCategoria.style.display = "none";
+        const sufixoId = Tipo === 'INVESTIMENTO' ? 'invest' : Tipo.toLowerCase();
+        document.getElementById(`cat-${sufixoId}`).value = Categoria;
+    });
     ButtonClosePopUpCategoria.addEventListener("click", () => {
         PopUpCategoria.style.display = "none";
     });
+    RenderizarCategoria();
     // ================= 2. modal receita =================
     const PopUpReceita = document.getElementById("modal-receita"), ButtonAddReceita = document.getElementById("btn-open-receita"), ButtonClosePopUpRceita = document.getElementById("close-receita"), ButtonAddCategoriaReceita = document.getElementById("btn-add-cat-receita");
     ButtonAddReceita.addEventListener("click", () => {
