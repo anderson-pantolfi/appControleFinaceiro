@@ -32,15 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let totalReceitas = 0, totalDespesas = 0, totalInvestimentos = 0;
         tableBody.innerHTML = '';
         transacoes.forEach((t) => {
-            if (t.tipo === 'receita')
+            if (t.tipo === 'RECEITA')
                 totalReceitas += t.valor;
-            if (t.tipo === 'despesa')
+            if (t.tipo === 'DESPESA')
                 totalDespesas += t.valor;
-            if (t.tipo === 'investimento')
+            if (t.tipo === 'INVESTIMENTO')
                 totalInvestimentos += t.valor;
             const tr = document.createElement('tr');
-            let sinal = t.tipo === 'receita' ? '+' : (t.tipo === 'despesa' ? '-' : '$');
-            let cor = t.tipo === 'receita' ? 'var(--color-success)' : (t.tipo === 'despesa' ? 'var(--color-danger)' : 'var(--color-warning)');
+            let sinal = t.tipo === 'RECEITA' ? '+' : (t.tipo === 'DESPESA' ? '-' : '$');
+            let cor = t.tipo === 'RECEITA' ? 'var(--color-success)' : (t.tipo === 'DESPESA' ? 'var(--color-danger)' : 'var(--color-warning)');
             tr.innerHTML = `<td>${formatarData(t.data)}</td>
             <td><strong>${t.descricao}</strong></td>
             <td>${t.categoria}</td>
@@ -96,11 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let sRec = 0, sDesp = 0, sInv = 0;
         dados.forEach(t => {
             nomes.push(t.descricao);
-            if (t.tipo === 'receita')
+            if (t.tipo === 'RECEITA')
                 sRec += t.valor;
-            if (t.tipo === 'despesa')
+            if (t.tipo === 'DESPESA')
                 sDesp += t.valor;
-            if (t.tipo === 'investimento')
+            if (t.tipo === 'INVESTIMENTO')
                 sInv += t.valor;
             histRec.push(sRec);
             histDesp.push(sDesp);
@@ -109,9 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         // Cores com base na nova paleta Enterprise
         const dsPatri = { label: 'Patrimônio', data: histPatri, borderColor: '#4f46e5', borderWidth: 3, fill: false, tension: 0.3 };
-        const dsInvest = { label: 'Investimentos', data: histInvest, borderColor: '#f59e0b', borderWidth: 2, fill: false, tension: 0.3 };
-        const dsRec = { label: 'Receitas', data: histRec, borderColor: '#10b981', borderWidth: 2, fill: false, tension: 0.3 };
-        const dsDesp = { label: 'Despesas', data: histDesp, borderColor: '#ef4444', borderWidth: 2, fill: false, tension: 0.3 };
+        const dsInvest = { label: 'INVESTIMENTO', data: histInvest, borderColor: '#f59e0b', borderWidth: 2, fill: false, tension: 0.3 };
+        const dsRec = { label: 'RECEITA', data: histRec, borderColor: '#10b981', borderWidth: 2, fill: false, tension: 0.3 };
+        const dsDesp = { label: 'DESPESA', data: histDesp, borderColor: '#ef4444', borderWidth: 2, fill: false, tension: 0.3 };
         let datasetsSelecionados = [];
         if (visualizacaoGrafico === 'patri_inv')
             datasetsSelecionados = [dsPatri, dsInvest];
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     const atualizarGraficoCarteira = (dados) => {
-        const investDados = dados.filter(t => t.tipo === 'investimento');
+        const investDados = dados.filter(t => t.tipo === 'INVESTIMENTO');
         const categorias = {};
         investDados.forEach(t => { categorias[t.categoria] = (categorias[t.categoria] || 0) + t.valor; });
         if (Object.keys(categorias).length === 0) {
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         investmentChart.update();
     };
-    // ================= 4. modal categoria ================================  
+    // ================= 4. modal categoria ================================ 
     const PopUpCategoria = document.getElementById("modal-nova-categoria"), ButtonClosePopUpCategoria = document.getElementById("close-nova-categoria"), InputTipoNovaCat = document.getElementById('tipo-nova-categoria'), InputNomenovaCategoria = document.getElementById("nome-nova-categoria"), DivErros = document.getElementById('cat-error-msg'), FormNovacategoria = document.getElementById("form-nova-categoria");
     let catsReceita = JSON.parse((_a = localStorage.getItem('catsReceita')) !== null && _a !== void 0 ? _a : "null") || ["SALÁRIO", "INVESTIMENTOS", "SERVIÇOS", "OUTROS"];
     let catsDespesa = JSON.parse((_b = localStorage.getItem('catsDespesa')) !== null && _b !== void 0 ? _b : "null") || ["MORADIA", "ALIMENTAÇÃO", "TRANSPORTE", "LAZER", "SAUDE"];
@@ -219,7 +219,50 @@ document.addEventListener('DOMContentLoaded', () => {
     ButtonClosePopUpCategoria.addEventListener("click", () => {
         PopUpCategoria.style.display = "none";
     });
+    const PopUpDeletarCategoria = document.getElementById("modal-confirm-delete");
+    const abrirDeletarCategoria = (tipoCategoria) => {
+        const categoriaAtual = document.getElementById(`cat-${tipoCategoria}`).value, listas = {
+            RECEITA: catsReceita,
+            DESPESA: catsDespesa,
+            INVESTIMENTO: catsInvest
+        };
+        const chave = tipoCategoria.toUpperCase();
+        if (listas[chave].length <= 1) {
+            DivErrosSistema.style.display = "flex";
+            DivContentErro.textContent = "Mantenha pelo menos uma categoria!";
+            return;
+        }
+        document.getElementById('delete-cat-name').textContent = categoriaAtual;
+        document.getElementById('delete-cat-type').value = tipoCategoria;
+        PopUpDeletarCategoria.style.display = "flex";
+    };
+    document.getElementById('btn-rm-cat-receita').onclick = () => abrirDeletarCategoria('receita');
+    document.getElementById('btn-rm-cat-despesa').onclick = () => abrirDeletarCategoria('despesa');
+    document.getElementById('btn-rm-cat-invest').onclick = () => abrirDeletarCategoria('invest');
+    document.getElementById("btn-confirm-delete").addEventListener("click", () => {
+        const tipo = document.getElementById("delete-cat-type").value, categorianame = document.getElementById("delete-cat-name").textContent;
+        if (tipo === 'receita') {
+            catsReceita = catsReceita.filter((c) => c !== categorianame);
+            localStorage.setItem('catsReceita', JSON.stringify(catsReceita));
+        }
+        if (tipo === 'despesa') {
+            catsDespesa = catsDespesa.filter((c) => c !== categorianame);
+            localStorage.setItem('catsDespesa', JSON.stringify(catsDespesa));
+        }
+        if (tipo === 'invest') {
+            catsInvest = catsInvest.filter((c) => c !== categorianame);
+            localStorage.setItem('catsInvest', JSON.stringify(catsInvest));
+        }
+        RenderizarCategoria();
+        PopUpDeletarCategoria.style.display = 'none';
+    });
+    document.getElementById('btn-cancel-delete').onclick = () => PopUpDeletarCategoria.style.display = 'none';
     RenderizarCategoria();
+    document.getElementById('btn-clear-data').onclick = () => { if (confirm("Apagar tudo?")) {
+        localStorage.clear();
+        location.reload();
+    } };
+    '';
     // ================= 5. modal receita =================
     const PopUpReceita = document.getElementById("modal-receita"), ButtonAddReceita = document.getElementById("btn-open-receita"), ButtonClosePopUpRceita = document.getElementById("close-receita"), ButtonAddCategoriaReceita = document.getElementById("btn-add-cat-receita");
     ButtonAddReceita.addEventListener("click", () => {
@@ -253,4 +296,37 @@ document.addEventListener('DOMContentLoaded', () => {
     ButtonAddCategoriaInvestimento.addEventListener("click", () => {
         AbrirNewCategoria("INVESTIMENTO");
     });
+    // ================= 8. modal erros =============================================    
+    const ButtonClosePopUpErros = document.getElementById("closeErro"), DivErrosSistema = document.getElementById("popUpErros"), DivContentErro = document.getElementById("contentErros");
+    ButtonClosePopUpErros.addEventListener("click", () => {
+        DivErrosSistema.style.display = "none";
+    });
+    buscarCotacoes();
+    // ================= 9. trasações ============================================= 
+    const AddTrasacao = (tipo, descricao, categoria, valor) => {
+        transacoes.push({ id: Date.now(),
+            data: new Date().toISOString(),
+            tipo,
+            descricao,
+            categoria,
+            valor
+        });
+        localStorage.setItem("jovemMilionarioDados", JSON.stringify(transacoes));
+        atualizarInterface();
+    };
+    const configForm = (formularioId, tipo, popUp, sufixoHtml) => {
+        const formulario = document.getElementById(formularioId);
+        formulario.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const inputDescricao = document.getElementById(`desc-${sufixoHtml}`);
+            const selectCategoria = document.getElementById(`cat-${sufixoHtml}`);
+            const inputValor = document.getElementById(`valor-${sufixoHtml}`);
+            AddTrasacao(tipo, inputDescricao.value, selectCategoria.value, parseFloat(inputValor.value));
+            formulario.reset();
+            document.getElementById(popUp).style.display = "none";
+        });
+    };
+    configForm('form-receita', 'RECEITA', 'modal-receita', 'receita');
+    configForm('form-despesa', 'DESPESA', 'modal-despesa', 'despesa');
+    configForm('form-investimento', 'INVESTIMENTO', 'modal-investimento', 'invest');
 });
