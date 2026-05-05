@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="src/css/estiloprincipal.css">
         <link rel="stylesheet" href="src/css/estiloprincipalappclient.css">
-        <link rel="stylesheet" href="src/css/estilotrasacao.css">
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
@@ -52,7 +51,7 @@
                     </li>
 
                     <li>
-                        <a href="relatorios.html" title="Relatórios" class="button-side-menu">
+                        <a href="#" title="Relatórios" class="button-side-menu">
                             <i class="fas fa-chart-pie icon-side-bar"></i> 
                             <span class="text-button-side menu-text">Relatórios</span>
                         </a>
@@ -139,51 +138,13 @@
                 </div>
             </header>
 
-            <div id="text-page">
-                <h2>Histórico de Transações</h2>
-                <h4 class="text-muted">Gerencie, busque e edite todas as suas movimentações.</h4>
-            </div>
-
-            <section class="charts-section" id="FiltroTrasacao">
-                <div class="input-group" id="divInputSearch">
-                    <input type="text" id="busca-descricao" placeholder="Buscar por descrição (ex: Mercado)...">
-                </div>
-                
-                <div id="selectFiltoTipo">
-                    <select id="filtro-tipo" class="premium-select">
-                        <option value="TODOS">Todos os Tipos</option>
-                        <option value="RECEITA">Apenas Receitas</option>
-                        <option value="DESPESA">Apenas Despesas</option>
-                        <option value="INVESTIMENTO">Apenas Investimentos</option>
-                    </select>
-                </div>
-            </section>
-
-            <section id="transactions-section">
-                <div id="table-container">
-                    <table id="transactions-table">
-                        <thead>
-                            <tr>
-                                <th>Data</th>
-                                <th>Descrição</th>
-                                <th>Categoria</th>
-                                <th>Tipo</th>
-                                <th>Valor</th>
-                                <th style="text-align: center;">Ações</th> 
-                            </tr>
-                        </thead>
-                        <tbody id="tbody-todas-transacoes">
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+            
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://kit.fontawesome.com/c978c073eb.js" crossorigin="anonymous"></script>
         <script src="src/js/utils.js"></script>
         <script src="src/js/homeapp.js"></script>
-        <script src="src/js/trasacao.js"></script>
+        <script src="src/js/dashboard.js"></script>
     </body>       
 </html>

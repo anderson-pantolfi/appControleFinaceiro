@@ -40,4 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('sidebarCollapsed', 'false');
         }
     });
+    // ================= 3. MENU DROPDOWN DO PERFIL (TOGGLE) =================
+    const botaoPerfil = document.getElementById("perfil");
+    const subMenuPerfil = document.getElementById("subMenuPerfil");
+    botaoPerfil.addEventListener("click", (event) => {
+        event.stopPropagation();
+        if (subMenuPerfil.style.display === "none" || subMenuPerfil.style.display === "") {
+            subMenuPerfil.style.display = "flex";
+        }
+        else {
+            subMenuPerfil.style.display = "none";
+        }
+    });
+    document.addEventListener("click", (event) => {
+        const alvoDoClique = event.target;
+        if (subMenuPerfil.style.display === "flex" && !subMenuPerfil.contains(alvoDoClique)) {
+            subMenuPerfil.style.display = "none";
+        }
+    });
 });

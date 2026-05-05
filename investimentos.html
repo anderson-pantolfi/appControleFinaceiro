@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <title>NOVO MILIONARIO</title>
+        <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="src/css/estiloprincipal.css">
+        <link rel="stylesheet" href="src/css/estiloprincipalappclient.css">
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+        <meta name="keywords" content="orçamentos, financas, dinheiro, receitas, despesas, investimentos">
+        <meta name="author" content="Anderson Pantolfi Moraes">
+        <meta name="description" content="este app esta aqui para auxiliar-te na organização de seus patrimonio de forma rapida e segura tudo concetrado em um unico local">
+    </head>
+
+    <body>
+        <aside id="sidebar" class="sidebar">
+            <button id="sidebar-toggle" class="btn-toggle" title="Recolher/Expandir Menu">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <section id="side-header">
+                <div id="logo">
+                    <img src="src/image/logo-image.png" id="logo-image"><br>
+                    <h1 id="text-logo" class="logo-name">O NOVO MILIONÁRIO</h1>
+                </div>
+            </section>
+
+            <nav id="side-menu" class="menu">
+                <ul>
+                    <li>
+                        <a class="button-side-menu" id="side-button-inicio" href="homeApp.html">
+                            <i class="fa-solid fa-house icon-side-bar"></i>
+                            <span class="text-button-side menu-text">inicio</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="button-side-menu" id="side-button-trancacao" href="transacao.html">
+                            <i class="fas fa-exchange-alt icon-side-bar"></i> 
+                            <span class="text-button-side menu-text">transações</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="button-side-menu" id="side-button-investimento" href="investimentos.html">
+                            <i class="fa-solid fa-money-bill-trend-up icon-side-bar"></i>
+                            <span class="text-button-side menu-text">investimentos</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="relatorios.html" title="Relatórios" class="button-side-menu">
+                            <i class="fas fa-chart-pie icon-side-bar"></i> 
+                            <span class="text-button-side menu-text">Relatórios</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="button-side-menu" id="side-button-metas" href="metas.html">
+                            <i class="fa-solid fa-bullseye icon-side-bar"></i>
+                            <span class="text-button-side menu-text">metas</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a class="button-side-menu" id="side-button-contas-bank" href="contas-banck.html">
+                            <i class="fa-solid fa-building-columns icon-side-bar"></i>
+                            <span class="text-button-side menu-text">Contas</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="button-side-menu" href="calculadoras.html"> 
+                            <i class="fa-solid fa-calculator icon-side-bar"></i>
+                            <span class="text-button-side menu-text">CALCULADORAS</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>    
+
+        <main id="corpo">
+            <header id="cabercalho">
+                <div id="logo-moblie">
+                    <img src="src/image/logo-image.png" id="logo-image"><br>
+                    <h1 id="text-logo">O NOVO MILIONÁRIO</h1>
+                </div>    
+
+                <button id="theme-toggle" class="btn-icon" title="Alternar Tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <i class="fa-solid fa-bell btn-icon"></i>
+                <div id="perfil">
+                    <div id="perfilimag"></div>
+
+                    <div id="nameperfil">
+                        <span class="username">name user</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+                
+                <div id="subMenuPerfil">
+                    <div id="conta" class="sub-menu-border-radius-top">
+                        <a href="minhaconta.html" class="sub-menu-border-radius-top">
+                            <i class="fa-solid fa-user"></i>
+                            minha conta
+                        </a>
+                    </div>
+
+                    <div id="configuração">
+                        <a href="configuracao.html">
+                            <i class="fa-solid fa-gear"></i>
+                            configuração
+                        </a>
+                    </div>
+
+                    <div id="meuPlano">
+                        <a href="myplan.html">
+                            <i class="fa-solid fa-file-signature"></i>
+                            Meu Plano
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="suporte.html">
+                            <i class="fa-solid fa-headset"></i>
+                            suporte
+                        </a>
+                    </div>
+
+                    <div id="sair" class="sub-menu-border-radius-botton">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        sair
+                    </div>
+                </div>
+            </header>
+
+            
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://kit.fontawesome.com/c978c073eb.js" crossorigin="anonymous"></script>
+        <script src="src/js/utils.js"></script>
+        <script src="src/js/homeapp.js"></script>
+        <script src="src/js/dashboard.js"></script>
+    </body>       
+</html>
